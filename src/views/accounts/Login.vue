@@ -1,26 +1,28 @@
 <template>
+<v-card>
+  <v-container>
   <div>
-    <h1>Login</h1>
+    <h2>Login</h2>
+    
     <div>
-      <label for="username">사용자 이름: </label>
-      <input type="text" id="username" v-model="credentials.username">
+      <v-text-field label="User Name" hide-details="auto"
+      type="text" id="username" v-model="credentials.username">
+      </v-text-field>    
     </div>
     <div>
-      <label for="password">비밀번호: </label>
-      <input 
-        type="password" 
-        id="password" 
-        v-model="credentials.password"
-        @keypress.enter="login"
-      >
+       <v-text-field label="Password" hide-details="auto"
+      type="password" id="password" 
+      v-model="credentials.password"
+      @keypress.enter="login">
+      </v-text-field>  
     </div>
-    <button @click="login">로그인</button>
   </div>
+  </v-container>
+  </v-card>
 </template>
 
 <script>
 import axios from 'axios'
-
 const SERVER_URL = process.env.VUE_APP_SERVER_URL
 
 export default {

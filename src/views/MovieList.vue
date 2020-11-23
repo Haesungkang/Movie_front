@@ -1,15 +1,21 @@
 <template>
   <div id="app">
     <vue-glide class="demo" :bullet="true">
-      <vue-glide-slide
+      <vue-glide-slide 
         v-for="movie in movies"
         :key="movie.id">
-        <img class="card-img-top" :src="movie.poster_path" alt="Card image cap">
+        <!-- Slide {{ movie.poster_path }} -->
+        <!-- {{ `https://image.tmdb.org/t/p/w500/${movie.poster_path}` }} -->
+        <v-card width="300">
+        <v-img :src="movie.poster_path">
+        </v-img>
+        <v-card-title>{{movie.title}}</v-card-title>
+        </v-card>
       </vue-glide-slide>
-      <template slot="control">
+      <!-- <template slot="control">
         <button data-glide-dir="<">prev</button>
         <button data-glide-dir=">">next</button>
-      </template>
+      </template> -->
     </vue-glide>
   </div>
 
@@ -32,6 +38,7 @@
 import axios from 'axios'
 import VueGlide from '@/components/Glide.js'
 import VueGlideSlide from '@/components/GlideSlide.vue'
+// import { VueGlide, VueGlideSlide } from 'vue-glide-js'
 
 export default {
     name: 'MovieList',
@@ -41,8 +48,8 @@ export default {
       }
     },
     components: {
-    [VueGlide.name]: VueGlide,
-    [VueGlideSlide.name]: VueGlideSlide
+      [VueGlide.name]: VueGlide,
+      [VueGlideSlide.name]: VueGlideSlide,
     },
     methods: {
       getMovie: function () {
@@ -55,7 +62,7 @@ export default {
     },
     created: function () {
       this.getMovie()
-    }
+    },
 }
 </script>
 
@@ -72,11 +79,12 @@ export default {
       &__slide {
         display: flex;
         border: 2px solid #ccc;
-        height: 500px;
+        width: 300px;
+        height: 600px;
         align-items: center;
         justify-content: center;
         color: #aaa;
-        font-size: 36px;
+        font-size: 25px;
         font-weight: 600;
         border-radius: 5px;
         transition: all .3s;
@@ -86,7 +94,7 @@ export default {
           color: #fff;
            opacity: 1;
           // background: linear-gradient(-45deg,#ed145b,#7b31f4);
-          background-color: limegreen;
+          background-color: lightblue;
         }
       }
     }

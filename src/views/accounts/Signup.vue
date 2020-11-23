@@ -1,25 +1,35 @@
 <template>
+<v-container>
   <div>
-    <h1>Signup</h1>
+    <h2>SignUp</h2>
     <div>
-      <label for="username">사용자 이름: </label>
-      <input type="text" id="username" v-model="credentials.username">
-    </div>
-    <div>
-      <label for="password">비밀번호: </label>
-      <input type="password" id="password" v-model="credentials.password">
-    </div>
-    <div>
-      <label for="passwordConfirmation">비밀번호 확인: </label>
-      <input 
-        type="password" 
-        id="passwordConfirmation" 
-        v-model="credentials.passwordConfirmation"
-        @keypress.enter="signup(credentials)"
+      <v-text-field
+      label="Username"
+      hide-details="auto"
+      type="text" v-model="credentials.username"
       >
+    </v-text-field>
     </div>
-    <button @click="signup(credentials)">회원가입</button>
+    <div>
+      <v-text-field
+      label="Password"
+      hide-details="auto"
+      type="password"
+      v-model="credentials.password"
+      >
+      </v-text-field>
+    </div>
+    <div>
+      <v-text-field
+      label="passwordConfirmation"
+      hide-details="auto"
+      type="password" 
+      v-model="credentials.passwordConfirmation"
+      @keypress.enter="signup">
+      </v-text-field>
+    </div>
   </div>
+</v-container>
 </template>
 
 <script>
