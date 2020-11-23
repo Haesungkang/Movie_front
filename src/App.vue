@@ -1,14 +1,47 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link :to="{ name: 'Home' }">Home</router-link> |
-      <router-link :to="{ name: 'MovieList'}">Movie List</router-link> |
-      <router-link :to="{ name: 'Recommend' }">Recommend</router-link> |
-      <router-link :to="{ name: 'Community' }">Community</router-link>
+      <span v-if="login">
+        <router-link :to="{ name: 'Home' }">Home</router-link> |
+        <router-link :to="{ name: 'MovieList'}">Movie List</router-link> |
+        <router-link :to="{ name: 'Recommend' }">Recommend</router-link> |
+        <router-link :to="{ name: 'Community' }">Community</router-link> |
+        <router-link @click.native="logout" to="#">Logout</router-link> 
+      </span>
+      <span v-else>
+        <router-link :to="{ name: 'Signup' }">Signup</router-link> |
+        <router-link :to="{ name: 'Login' }">Login</router-link> 
+      </span>
     </div>
-    <router-view/>
+    <router-view @login="login = true"/>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'App',
+  data: function () {
+    return {
+      login: false,
+    }
+  },
+  methods: {
+    logout: function () {
+      localStorage.removeItem('jwt')
+      this.login = false
+      this.$router.push({ name: 'Login' })
+    }
+  },
+  created: function () {
+    const token = localStorage.getItem('jwt')
+
+    if (token) {
+      this.login = true
+    }
+  }
+}
+</script>
+
 
 <style>
 #app {
