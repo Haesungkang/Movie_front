@@ -7,6 +7,8 @@ import Home from '../views/Home.vue'
 import MovieList from '@/views/MovieList.vue'
 import Recommend from '@/views/Recommend.vue'
 import Community from '@/views/Community.vue'
+import Signup from '@/views/accounts/Signup'
+import Login from '@/views/accounts/Login'
 
 
 Vue.use(VueRouter)
@@ -31,6 +33,16 @@ const routes = [
     path: '/community',
     name: 'Community',
     component: Community
+  },
+  {
+    path: '/accounts/signup',
+    name: 'Signup',
+    component: Signup
+  },
+  {
+    path: '/accounts/login',
+    name: 'Login',
+    component: Login
   },
 ]
 

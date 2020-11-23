@@ -1,12 +1,19 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link :to="{ name: 'Home' }">Home</router-link> |
-      <router-link :to="{ name: 'MovieList'}">Movie List</router-link> |
-      <router-link :to="{ name: 'Recommend' }">Recommend</router-link> |
-      <router-link :to="{ name: 'Community' }">Community</router-link>
+      <span v-if="login">
+        <router-link :to="{ name: 'Home' }">Home</router-link> |
+        <router-link :to="{ name: 'MovieList'}">Movie List</router-link> |
+        <router-link :to="{ name: 'Recommend' }">Recommend</router-link> |
+        <router-link :to="{ name: 'Community' }">Community</router-link> |
+        <router-link @click.native="logout" to="#">Logout</router-link> 
+      </span>
+      <span v-else>
+        <router-link :to="{ name: 'Signup' }">Signup</router-link> |
+        <router-link :to="{ name: 'Login' }">Login</router-link> 
+      </span>
     </div>
-    <router-view/>
+    <router-view @login="login = true"/>
   </div>
 </template>
 
@@ -15,9 +22,29 @@ import VueGlide from '@/components/Glide'
 import VueGlideSlide from '@/components/GlideSlide'
 
 export default {
+  name: 'App',
+  data: function () {
+    return {
+      login: false,
+    }
+  },
   components: {
     [VueGlide.name]: VueGlide,
     [VueGlideSlide.name]: VueGlideSlide
+  },
+  methods: {
+    logout: function () {
+      localStorage.removeItem('jwt')
+      this.login = false
+      this.$router.push({ name: 'Login' })
+    }
+  },
+  created: function () {
+    const token = localStorage.getItem('jwt')
+
+    if (token) {
+      this.login = true
+    }
   }
 }
 </script>
