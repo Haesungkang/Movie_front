@@ -10,13 +10,26 @@
   </div>
 </template>
 
+<script>
+import VueGlide from '@/components/Glide'
+import VueGlideSlide from '@/components/GlideSlide'
+
+export default {
+  components: {
+    [VueGlide.name]: VueGlide,
+    [VueGlideSlide.name]: VueGlideSlide
+  }
+}
+</script>
+
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  margin-top: 60px;
 }
 
 #nav {

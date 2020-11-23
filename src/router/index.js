@@ -1,9 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Glide from '@/components/Glide'
+import GlideSlide from '@/components/GlideSlide'
+
 import Home from '../views/Home.vue'
 import MovieList from '@/views/MovieList.vue'
 import Recommend from '@/views/Recommend.vue'
 import Community from '@/views/Community.vue'
+
 
 Vue.use(VueRouter)
 
@@ -37,3 +41,12 @@ const router = new VueRouter({
 })
 
 export default router
+
+// export default {
+//   install (Vue) {
+//     Vue.component(Glide.name, Glide)
+//     Vue.component(GlideSlide.name, GlideSlide)
+//   }
+// }
+
+export { Glide, GlideSlide }
