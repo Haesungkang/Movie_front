@@ -6,7 +6,9 @@
       <v-text-field
       label="Username"
       hide-details="auto"
-      type="text" v-model="credentials.username"
+      type="text"
+      id="username"
+      v-model="credentials.username"
       >
     </v-text-field>
     </div>
@@ -15,6 +17,7 @@
       label="Password"
       hide-details="auto"
       type="password"
+      id="password"
       v-model="credentials.password"
       >
       </v-text-field>
@@ -23,7 +26,8 @@
       <v-text-field
       label="passwordConfirmation"
       hide-details="auto"
-      type="password" 
+      type="password"
+      id="passwordConfirmation"
       v-model="credentials.passwordConfirmation"
       @keypress.enter="signup">
       </v-text-field>
@@ -34,7 +38,6 @@
 
 <script>
 import axios from 'axios'
-
 const SERVER_URL = process.env.VUE_APP_SERVER_URL
 
 export default {

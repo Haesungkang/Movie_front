@@ -5,20 +5,27 @@
     <h2>Login</h2>
     
     <div>
-      <v-text-field label="User Name" hide-details="auto"
-      type="text" id="username" v-model="credentials.username">
+      <v-text-field 
+        label="User Name"
+        hide-details="auto"
+        type="text"
+        id="username"
+        v-model="credentials.username">
       </v-text-field>    
     </div>
     <div>
-       <v-text-field label="Password" hide-details="auto"
-      type="password" id="password" 
-      v-model="credentials.password"
-      @keypress.enter="login">
+      <v-text-field
+        label="Password"
+        hide-details="auto"
+        type="password"
+        id="password" 
+        v-model="credentials.password"
+        @keypress.enter="login">
       </v-text-field>  
     </div>
   </div>
   </v-container>
-  </v-card>
+</v-card>
 </template>
 
 <script>
