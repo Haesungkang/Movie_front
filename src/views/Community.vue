@@ -2,11 +2,8 @@
   <div>
       <h2>Let's talk about MOVIES!</h2>
       <ul>
-        <li
-          v-for="article in articles"
-          :key="article.id">
-          <h5>{{ article.title }}</h5>
-        </li>
+        <router-link :to="{ name: 'ArticleList' }">Article List</router-link> | 
+        <router-link :to="{ name: 'CreateArticle' }">Create Article</router-link> |
       </ul>
   </div>
 </template>

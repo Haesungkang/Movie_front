@@ -11,6 +11,11 @@ import Signup from '@/views/accounts/Signup'
 import Login from '@/views/accounts/Login'
 import TopRatedMovies from '@/views/TopRatedMovies.vue'
 
+import ArticleList from '@/views/community/ArticleList'
+import CreateArticle from '@/views/community/CreateArticle'
+import CreateComment from '@/views/community/CreateComment'
+
+
 
 Vue.use(VueRouter)
 
@@ -49,6 +54,21 @@ const routes = [
     path: '/top-rated-movies',
     name: 'topratedmovies',
     component: TopRatedMovies
+  },
+  {
+    path: '/community/articlelist',
+    name: 'ArticleList',
+    component: ArticleList
+  },
+  {
+    path: '/community/createarticle',
+    name: 'CreateArticle',
+    component: CreateArticle
+  },
+  {
+    path: '/community/createcomment',
+    name: 'CreateComment',
+    component: CreateComment
   },
 ]
 
