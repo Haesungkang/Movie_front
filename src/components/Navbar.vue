@@ -7,9 +7,13 @@
         class="font-weight-light">Hyunji, JaeYoung, HaeSung</span>
       </v-toolbar-title>
         <v-spacer></v-spacer>
-          <v-btn :to="{ name: 'Login' }">Login</v-btn>
-          <v-btn @click.native="logout" to="#">Logout</v-btn>
-          <v-btn :to="{ name: 'SignUp' }">SignUp</v-btn>
+          <v-list v-if="login">
+            <v-btn @click.native="logout" to="#">Logout</v-btn>
+          </v-list>
+          <v-list v-else>
+            <v-btn :to="{ name: 'Signup' }">SignUp</v-btn>
+            <v-btn :to="{ name: 'Login' }">Login</v-btn>
+          </v-list>
     </v-app-bar>
 
     <v-navigation-drawer app v-model="drawer" color="grey accent-2">
@@ -41,6 +45,7 @@
     data: function() {
       return {
         drawer: false,
+        login: false,
         links: [
           { icon: "mdi-home", text: "Home", route: "/" },
           {
@@ -50,19 +55,19 @@
           },
           {
             icon: "mdi-trophy",
-            text: "Top Rated Movies",
+            text: "All Movies",
             route: "/top-rated-movies"
           },
           {
             icon: "mdi-television-classic",
-            text: "Popular Shows",
-            route: "/popular-shows"
+            text: "Top Vote Average Movies",
+            route: "/top-vote-average-movies"
           },
-          {
-            icon: "mdi-medal",
-            text: "Top Rated Shows",
-            route: "/top-rated-shows"
-          },
+          // {
+          //   icon: "mdi-medal",
+          //   text: "Top Rated Shows",
+          //   route: "/top-rated-shows"
+          // },
           {
             icon: "mdi-information",
             text: "About",
@@ -74,6 +79,18 @@
     methods: {
       sortBy(prop) {
         this.$emit(prop);
+      },
+      logout: function () {
+        localStorage.removeItem('jwt')
+        this.login = false
+        this.$router.push({ name: 'Home' })
+      },
+    },
+    created: function () {
+      const token = localStorage.getItem('jwt')
+
+      if (token) {
+        this.login = true
       }
     }
   };

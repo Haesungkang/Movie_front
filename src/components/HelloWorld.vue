@@ -10,6 +10,7 @@
     <ul>
       <li><a href="#" target="_blank" rel="noopener">Hyunji Kim</a></li>
       <li><a href="#" target="_blank" rel="noopener">Jaeyoung Choi</a></li>
+      <li><a href="#" target="_blank" rel="noopener">HaeSung Kang</a></li>
     </ul>
   </div>
 </template>

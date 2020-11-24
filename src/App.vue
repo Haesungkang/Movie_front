@@ -16,7 +16,8 @@
         <router-link :to="{ name: 'SuperheroesList' }">SuperheroesList</router-link>
       <!-- </span> -->
     </div>
-    <router-view @login="login = true"/>
+    <!-- <router-view @login="login = true"/> -->
+    <router-view/>
   </div>
   <v-content>
   <app-content></app-content>
@@ -36,27 +37,27 @@ export default {
   name: 'App',
   data: function () {
     return {
-      login: false,
+      // login: false,
     }
   },
   components: {
     appNavbar: Navbar,
 
   },
-  methods: {
-    logout: function () {
-      localStorage.removeItem('jwt')
-      this.login = false
-      this.$router.push({ name: 'Login' })
-    }
-  },
-  created: function () {
-    const token = localStorage.getItem('jwt')
+  // methods: {
+  //   logout: function () {
+  //     localStorage.removeItem('jwt')
+  //     this.login = false
+  //     this.$router.push({ name: 'Login' })
+  //   }
+  // },
+  // created: function () {
+  //   const token = localStorage.getItem('jwt')
 
-    if (token) {
-      this.login = true
-    }
-  }
+  //   if (token) {
+  //     this.login = true
+  //   }
+  // }
 }
 </script>
 

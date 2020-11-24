@@ -10,6 +10,9 @@ import Community from '@/views/Community.vue'
 import Signup from '@/views/accounts/Signup'
 import Login from '@/views/accounts/Login'
 import TopRatedMovies from '@/views/TopRatedMovies.vue'
+import TopVoteAverageMovies from '@/views/TopVoteAverageMovies.vue'
+import About from '@/views/About.vue'
+import Detail from '@/views/Detail.vue'
 
 import ArticleList from '@/views/community/ArticleList'
 import CreateArticle from '@/views/community/CreateArticle'
@@ -51,9 +54,24 @@ const routes = [
     component: Login
   },
   {
+    path: '/about',
+    name: 'About',
+    component: About
+  },
+  {
+    path: '/detail',
+    name: 'Detail',
+    component: Detail
+  },
+  {
     path: '/top-rated-movies',
     name: 'topratedmovies',
     component: TopRatedMovies
+  },
+  {
+    path: '/top-vote-average-movies',
+    name: 'TopVoteAverageMovies',
+    component: TopVoteAverageMovies
   },
   {
     path: '/community/articlelist',
