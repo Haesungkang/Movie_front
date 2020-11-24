@@ -3,27 +3,28 @@
   <div id="app">
     <app-navbar></app-navbar>
     <div id="nav">
-      <!-- <span v-if="login"> -->
+      <span v-if="$store.state.isLogin">
         <router-link :to="{ name: 'Home' }">Home</router-link> |
         <router-link :to="{ name: 'MovieList'}">Movie List</router-link> |
         <router-link :to="{ name: 'Recommend' }">Recommend</router-link> |
         <router-link :to="{ name: 'Community' }">Community</router-link> |
         <router-link @click.native="logout" to="#">Logout</router-link> 
-      <!-- </span>
-      <span v-else> -->
+      </span>
+      <span v-else>
         <router-link :to="{ name: 'Signup' }">Signup</router-link> |
         <router-link :to="{ name: 'Login' }">Login</router-link> |
         <router-link :to="{ name: 'SuperheroesList' }">SuperheroesList</router-link>
-      <!-- </span> -->
+      </span>
     </div>
-    <!-- <router-view @login="login = true"/> -->
-    <router-view/>
+    <router-view @login="$store.state.isLogin"/>
+    <!-- <router-view/> -->
   </div>
-  <v-content>
+  <!-- <v-content>
+
   </v-content>
   <v-footer>
-  <app-footer></app-footer>
-  </v-footer>
+
+  </v-footer> -->
   </v-app>
 </template>
 
@@ -46,13 +47,13 @@ export default {
   methods: {
     logout: function () {
       localStorage.removeItem('jwt')
+      this.$store.state.isLogin = false
       this.login = false
       this.$router.push({ name: 'Login' })
     }
   },
   created: function () {
     const token = localStorage.getItem('jwt')
-
     if (token) {
       this.login = true
     }

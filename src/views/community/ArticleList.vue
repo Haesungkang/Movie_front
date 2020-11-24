@@ -2,7 +2,9 @@
   <div>
     <h3>ArticleList</h3>
     <ul>
-      <li v-for="(article) in articles" :key="article.id">
+      <li v-for="(article) in articles"
+        :key="article.id"
+      >
         <span>{{ article.title }}</span>
         <button @click="deleteArticle(article)" class="article-btn">X</button>
       </li>
@@ -51,7 +53,7 @@ export default {
 
       axios.delete(`${SERVER_URL}/community/${article.id}/`, config)
         .then((res) => {
-          console.log(res)
+          // console.log(res)
           const targetArticleIdx = this.articles.findIndex((article) => {
             return article.id === res.data.id
           })

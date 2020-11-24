@@ -7,7 +7,7 @@
         class="font-weight-light">Hyunji, JaeYoung, HaeSung</span>
       </v-toolbar-title>
         <v-spacer></v-spacer>
-          <v-list v-if="login">
+          <v-list v-if="$store.state.isLogin">
             <v-btn @click.native="logout" to="#">Logout</v-btn>
           </v-list>
           <v-list v-else>
@@ -82,7 +82,7 @@
       },
       logout: function () {
         localStorage.removeItem('jwt')
-        this.login = false
+        this.$store.state.isLogin = false
         this.$router.push({ name: 'Home' })
       },
     },

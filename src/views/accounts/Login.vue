@@ -48,7 +48,9 @@ export default {
         .then((res) => {
           // console.log(res)
           localStorage.setItem('jwt', res.data.token)
-          this.$emit('login')
+          // 20-11-25 12:43 현지의 발견: 아래 코드를 주석처리해야 로그인이 가능합니다..!
+          // this.$emit('login')
+          this.$store.state.isLogin = true
           this.$router.push({ name: 'Home' })
         })
         .catch((err) => {
