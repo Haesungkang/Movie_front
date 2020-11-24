@@ -5,12 +5,14 @@
       <vue-glide-slide v-for="(movie, idx) in movies" :key="idx" :movie="movie"
       >
 
+        <v-layout column align-center fill-height class="text-center">
         <v-img max-height="500" max-width="300"
         :src="movie.poster_path"></v-img>
         <!-- {{ movie.title }} -->
 
         <!-- <v-img :src="movie.poster_path"></v-img> -->
-        <!-- <v-card-title>{{movie.title}}</v-card-title> -->
+        <v-card-title>{{movie.title}}</v-card-title>
+        </v-layout>
       </vue-glide-slide>
       <template slot="control">
         <button data-glide-dir="<">PREV</button>

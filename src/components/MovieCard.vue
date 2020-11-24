@@ -1,25 +1,32 @@
 <template>
     <!-- // xs12 sm6 md4 lg3 -->
     <v-flex xs12 sm6 md4 lg3>
-      <v-card hover class="ma-3" min-height="500">
-        <v-layout column align-center fill-height class="text-center">
+      <v-card hover class="ma-3" min-height="500" elevation="9">
+        <v-layout column align-center fill-width class="text-center">
           <!-- height="700" aspect-ratio="9/16" -->
-          <v-img
+          <v-img max-height="380" router to="/detail"
           :src="movie.poster_path"></v-img>
           <v-card-title class="font-weight-light">{{movie.title}}</v-card-title>
-
           <v-spacer></v-spacer>
 
           <v-card-text>
-            <v-expansion-panels focusable>
+            <v-expansion-panels v-if="movie.overview" focusable>
               <v-expansion-panel id="synopsis">
                 <v-expansion-panel-header>
                   <span class="text-center">줄거리</span>
-                </v-expansion-panel-header>
-                <v-expansion-panel-content>{{movie.overview}}</v-expansion-panel-content>
+                </v-expansion-panel-header >
+                <v-expansion-panel-content >{{movie.overview}}</v-expansion-panel-content>
+              </v-expansion-panel>
+            </v-expansion-panels>
+            <v-expansion-panels disabled="disabled" v-else focusable>
+              <v-expansion-panel id="synopsis">
+                <v-expansion-panel-header>
+                  <span class="text-center">줄거리가 없습니다</span>
+                </v-expansion-panel-header >
               </v-expansion-panel>
             </v-expansion-panels>
           </v-card-text>
+
           <!-- v-model="movie.vote_average" -->
           <v-progress-linear
             buffer-value="100"
