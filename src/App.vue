@@ -3,19 +3,20 @@
   <div id="app">
     <app-navbar></app-navbar>
     <div id="nav">
-      <span v-if="login">
+      <!-- <span v-if="login"> -->
         <router-link :to="{ name: 'Home' }">Home</router-link> |
         <router-link :to="{ name: 'MovieList'}">Movie List</router-link> |
         <router-link :to="{ name: 'Recommend' }">Recommend</router-link> |
         <router-link :to="{ name: 'Community' }">Community</router-link> |
-        <router-link @click.native="logout" to="#">Logout</router-link> 
-      </span>
-      <span v-else>
+        <!-- <router-link @click.native="logout" to="#">Logout</router-link>  -->
+      <!-- </span> -->
+      <!-- <span v-else>
         <router-link :to="{ name: 'Signup' }">Signup</router-link> |
         <router-link :to="{ name: 'Login' }">Login</router-link> 
-      </span>
+      </span> -->
     </div>
-    <router-view @login="login = true"/>
+    <!-- <router-view @login="login = true"/> -->
+    <router-view/>
   </div>
   <v-content>
   <app-content></app-content>
@@ -35,27 +36,27 @@ export default {
   name: 'App',
   data: function () {
     return {
-      login: false,
+      // login: false,
     }
   },
   components: {
     appNavbar: Navbar,
 
   },
-  methods: {
-    logout: function () {
-      localStorage.removeItem('jwt')
-      this.login = false
-      this.$router.push({ name: 'Login' })
-    }
-  },
-  created: function () {
-    const token = localStorage.getItem('jwt')
+  // methods: {
+  //   logout: function () {
+  //     localStorage.removeItem('jwt')
+  //     this.login = false
+  //     this.$router.push({ name: 'Login' })
+  //   }
+  // },
+  // created: function () {
+  //   const token = localStorage.getItem('jwt')
 
-    if (token) {
-      this.login = true
-    }
-  }
+  //   if (token) {
+  //     this.login = true
+  //   }
+  // }
 }
 </script>
 
