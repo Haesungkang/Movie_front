@@ -50,19 +50,19 @@
           },
           {
             icon: "mdi-trophy",
-            text: "Top Rated Movies",
+            text: "All Movies",
             route: "/top-rated-movies"
           },
           {
             icon: "mdi-television-classic",
-            text: "Popular Shows",
-            route: "/popular-shows"
+            text: "Top Vote Average Movies",
+            route: "/top-vote-average-movies"
           },
-          {
-            icon: "mdi-medal",
-            text: "Top Rated Shows",
-            route: "/top-rated-shows"
-          },
+          // {
+          //   icon: "mdi-medal",
+          //   text: "Top Rated Shows",
+          //   route: "/top-rated-shows"
+          // },
           {
             icon: "mdi-information",
             text: "About",

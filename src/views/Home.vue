@@ -1,19 +1,27 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="@/assets/clapperboard.png" width="200">
-    <HelloWorld msg="Welcome to LocalJay's website!"/>
-  </div>
+  <v-container>
+    <v-layout align-center justify-space-around column fill-height wrap class="my-5 text-center">
+      <h1
+        class="display-3 my-3 font-weight-thin black--text my-5"
+      >Discover Movies With 
+      HyunJi JaeYoung HaeSung</h1>
+
+      <v-img contain width="50vw" height="50vh" src="../assets/undraw_horror_movie.svg"></v-img>
+
+      <v-btn color="primary" min-width="200" class="my-5" router to="/movie_info">Explore</v-btn>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
-export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
-}
+  export default {
+    components: {},
+    data() {
+      return {};
+    }
+  };
 </script>
+
+<style>
+</style>
 

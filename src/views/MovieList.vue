@@ -1,14 +1,14 @@
 <template>
   <div id="app">
     <v-content>
-    <vue-glide class="demo" :bullet="true">
+    <vue-glide class="demo" :bullet="true" v-if="movies.length">
       <vue-glide-slide v-for="(movie, idx) in movies" :key="idx" :movie="movie"
       >
-        <v-card>
-        <v-img max-width="300" max-height="550" 
+
+        <v-img max-height="500" max-width="300"
         :src="movie.poster_path"></v-img>
-        <v-card-title>{{ movie.title }}</v-card-title>
-        </v-card>
+        <!-- {{ movie.title }} -->
+
         <!-- <v-img :src="movie.poster_path"></v-img> -->
         <!-- <v-card-title>{{movie.title}}</v-card-title> -->
       </vue-glide-slide>
