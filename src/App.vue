@@ -17,7 +17,8 @@
     </div>
     <router-view @login="login = true"/>
   </div>
-    <v-content>
+  <v-content>
+  <app-content></app-content>
   </v-content>
   <v-footer>
   <app-footer></app-footer>
@@ -26,8 +27,7 @@
 </template>
 
 <script>
-import VueGlide from '@/components/Glide'
-import VueGlideSlide from '@/components/GlideSlide'
+
 import Navbar from "./components/Navbar.vue"
 // import Footer from "./components/Footer.vue"
 
@@ -39,8 +39,6 @@ export default {
     }
   },
   components: {
-    [VueGlide.name]: VueGlide,
-    [VueGlideSlide.name]: VueGlideSlide,
     appNavbar: Navbar,
 
   },

@@ -9,6 +9,7 @@ import Recommend from '@/views/Recommend.vue'
 import Community from '@/views/Community.vue'
 import Signup from '@/views/accounts/Signup'
 import Login from '@/views/accounts/Login'
+import TopRatedMovies from '@/views/TopRatedMovies.vue'
 
 
 Vue.use(VueRouter)
@@ -43,6 +44,11 @@ const routes = [
     path: '/accounts/login',
     name: 'Login',
     component: Login
+  },
+  {
+    path: '/top-rated-movies',
+    name: 'topratedmovies',
+    component: TopRatedMovies
   },
 ]
 

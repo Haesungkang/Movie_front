@@ -1,22 +1,23 @@
 <template>
   <div id="app">
+    <v-content>
     <vue-glide class="demo" :bullet="true">
-      <vue-glide-slide 
-        v-for="movie in movies"
-        :key="movie.id">
-        <!-- Slide {{ movie.poster_path }} -->
-        <!-- {{ `https://image.tmdb.org/t/p/w500/${movie.poster_path}` }} -->
-        <v-card width="300">
-        <v-img :src="movie.poster_path">
-        </v-img>
-        <v-card-title>{{movie.title}}</v-card-title>
+      <vue-glide-slide v-for="(movie, idx) in movies" :key="idx" :movie="movie"
+      >
+        <v-card>
+        <v-img max-width="300" max-height="550" 
+        :src="movie.poster_path"></v-img>
+        <v-card-title>{{ movie.title }}</v-card-title>
         </v-card>
+        <!-- <v-img :src="movie.poster_path"></v-img> -->
+        <!-- <v-card-title>{{movie.title}}</v-card-title> -->
       </vue-glide-slide>
-      <!-- <template slot="control">
-        <button data-glide-dir="<">prev</button>
-        <button data-glide-dir=">">next</button>
-      </template> -->
+      <template slot="control">
+        <button data-glide-dir="<">PREV</button>
+        <button data-glide-dir=">">NEXT</button>
+      </template>
     </vue-glide>
+    </v-content>
   </div>
 
   <!-- <div>
@@ -36,20 +37,25 @@
 
 <script>
 import axios from 'axios'
-import VueGlide from '@/components/Glide.js'
-import VueGlideSlide from '@/components/GlideSlide.vue'
-// import { VueGlide, VueGlideSlide } from 'vue-glide-js'
+import VueGlide from '@/components/Glide'
+import VueGlideSlide from '@/components/GlideSlide'
+// import { Glide, GlideSlide } from 'vue-glide-js'
 
 export default {
     name: 'MovieList',
+    components: {
+      [VueGlide.name]: VueGlide,
+      [VueGlideSlide.name]: VueGlideSlide,
+
+    },
+    // props: {
+    //   movies: Object
+    // },
+
     data: function () {
       return {
         movies: [],
       }
-    },
-    components: {
-      [VueGlide.name]: VueGlide,
-      [VueGlideSlide.name]: VueGlideSlide,
     },
     methods: {
       getMovie: function () {
@@ -79,7 +85,7 @@ export default {
       &__slide {
         display: flex;
         border: 2px solid #ccc;
-        width: 300px;
+
         height: 600px;
         align-items: center;
         justify-content: center;

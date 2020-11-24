@@ -1,9 +1,9 @@
 import Vue from 'vue'
-import VueGlide from 'vue-glide-js'
-import 'vue-glide-js/dist/vue-glide.css'
 import App from './App.vue'
 import router from './router'
 import vuetify from './plugins/vuetify';
+import VueGlide from 'vue-glide-js'
+import 'vue-glide-js/dist/vue-glide.css'
 
 Vue.config.productionTip = false
 

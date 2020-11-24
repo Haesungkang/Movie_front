@@ -2,9 +2,9 @@
   <nav>
     <v-app-bar dark app flat>
       <v-app-bar-nav-icon id="drawerIcon" @click="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-toolbar-title class="text-uppercase white--text">
-        <span class="font-weight-light">SSA</span>
-        <span>GV</span>
+      <v-toolbar-title :to="{ name: 'Home' }" class="text-uppercase white--text">
+        <span
+        class="font-weight-light">Hyunji, JaeYoung, HaeSung</span>
       </v-toolbar-title>
         <v-spacer></v-spacer>
           <v-btn :to="{ name: 'Login' }">Login</v-btn>
@@ -12,7 +12,7 @@
           <v-btn :to="{ name: 'SignUp' }">SignUp</v-btn>
     </v-app-bar>
 
-    <v-navigation-drawer app v-model="drawer" color="indigo accent-2">
+    <v-navigation-drawer app v-model="drawer" color="grey accent-2">
       <v-layout column align-center>
         <v-flex class="my-5">
           <v-img max-width="100px" src=""></v-img>
@@ -31,10 +31,13 @@
       </v-list>
     </v-navigation-drawer>
   </nav>
+  
 </template>
 
 <script>
   export default {
+    props: ["pageTitle", "sortCriteria"],
+
     data: function() {
       return {
         drawer: false,
@@ -67,6 +70,11 @@
           }
         ]
       };
+    },
+    methods: {
+      sortBy(prop) {
+        this.$emit(prop);
+      }
     }
   };
 </script>
