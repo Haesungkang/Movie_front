@@ -4,10 +4,10 @@
       <v-card hover class="ma-3" min-height="500">
         <v-layout column align-center fill-height class="text-center">
           <!-- height="700" aspect-ratio="9/16" -->
-          <v-img 
+          <v-img
           :src="movie.poster_path"></v-img>
-
           <v-card-title class="font-weight-light">{{movie.title}}</v-card-title>
+
           <v-spacer></v-spacer>
 
           <v-card-text>
