@@ -25,7 +25,7 @@ export default {
     },
     focusAt: {
       type: [String, Number],
-      default: 0
+      default: 1
     },
     gap: {
       type: Number,

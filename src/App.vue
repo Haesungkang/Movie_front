@@ -3,7 +3,7 @@
   <div id="app">
     <app-navbar></app-navbar>
     <div id="nav">
-      <span v-if="login">
+      <!-- <span v-if="login"> -->
         <router-link :to="{ name: 'Home' }">Home</router-link> |
         <router-link :to="{ name: 'MovieList'}">Movie List</router-link> |
         <router-link :to="{ name: 'Recommend' }">Recommend</router-link> |

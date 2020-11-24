@@ -15,8 +15,8 @@
         </v-layout>
       </vue-glide-slide>
       <template slot="control">
-        <button data-glide-dir="<">PREV</button>
-        <button data-glide-dir=">">NEXT</button>
+        <button class="btn" data-glide-dir="<">PREVIOUS</button>
+        <button class="btn" data-glide-dir=">">NEXT</button>
       </template>
     </vue-glide>
     </v-content>
@@ -57,6 +57,7 @@ export default {
     data: function () {
       return {
         movies: [],
+        
       }
     },
     methods: {
@@ -82,6 +83,13 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  .btn {
+    border: #2c3e50;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    
+  }
   .demo {
     .glide {
       &__slide {
