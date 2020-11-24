@@ -19,7 +19,7 @@
     <v-navigation-drawer app v-model="drawer" color="grey accent-2">
       <v-layout column align-center>
         <v-flex class="my-5">
-          <v-img max-width="100px" src=""></v-img>
+          <!-- <v-img max-width="100px" src=""></v-img> -->
         </v-flex>
       </v-layout>
 
@@ -44,8 +44,8 @@
 
     data: function() {
       return {
-        drawer: false,
         login: false,
+        drawer: false,
         links: [
           { icon: "mdi-home", text: "Home", route: "/" },
           {
