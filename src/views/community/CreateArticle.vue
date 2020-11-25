@@ -34,6 +34,7 @@ export default {
 
       const articleItem = {
         title: this.title,
+        content: 'test',
       }
 
       if (articleItem.title) {

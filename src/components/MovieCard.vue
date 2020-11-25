@@ -4,7 +4,7 @@
       <v-card hover class="ma-3" min-height="500" elevation="9">
         <v-layout column align-center fill-width class="text-center">
           <!-- height="700" aspect-ratio="9/16" -->
-          <v-img max-height="380" router to="/detail"
+          <v-img max-height="380" @click="toDetail(movie)"
           :src="movie.poster_path"></v-img>
           <v-card-title class="font-weight-light">{{movie.title}}</v-card-title>
           <v-spacer></v-spacer>
@@ -61,12 +61,19 @@ export default {
  name: "MovieCard",
  props: {
    movie: Object
- }
+ },
   // props: ["movies", "imageURL"],
   //   data() {
   //     return {};
   // }
+  methods: {
+
+    toDetail: function(movie) {
+      this.$router.push({ name: "Detail", query : { movie : movie }})
+    }
+  }
 }
+
 
 </script>
 
