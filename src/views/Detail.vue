@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-card>
+    <v-card align-content-center justify-center class="text-center" max-height="1900" max-width="500">
     <v-img 
     :src="$route.query.movie.poster_path">
     </v-img>
@@ -31,22 +31,56 @@
         Back
       </v-btn>
     </v-card-text>
-
     </v-card>
-  </v-container>
+    Comment Start
+      <comments 
+    :comments_wrapper_classes="['custom-scrollbar', 'comments-wrapper']"
+    :comments="comments"
+    :current_user="current_user"
+    @submit-comment="submitComment"
+  ></comments>
+</v-container>
 </template>
-
 <script>
+import Comments from '@/components/Comments.vue'
+
 // import axios from 'axios'
 
 export default {
   name: 'Detail',
+  components: {
+    Comments
+  },
   props: {
    movie: Object
- }
+ },
+ data() {
+    return {
+      
+      creator: {
+        avatar: 'http://via.placeholder.com/100x100/a74848',
+        user: 'exampleCreator'
+      },
+      // username으로 받을수있게 설정 및 delete 마무리
+      current_user: {
+        avatar: 'http://via.placeholder.com/100x100/a74848',
+        user: this.userName
+      },
+      comments: []
+    }
+  },
+  methods: {
+    submitComment: function(reply) {
+      this.comments.push({
+        id: this.comments.length + 1,
+        user: this.current_user.user,
+        avatar: this.current_user.avatar,
+        text: reply
+      });
+    }
+  }
 }
 </script>
 
 <style>
-
 </style>

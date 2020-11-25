@@ -8,9 +8,12 @@ export default new Vuex.Store({
     isLogin: false
   },
   mutations: {
+
   },
   actions: {
+
   },
   modules: {
+    
   }
 })
