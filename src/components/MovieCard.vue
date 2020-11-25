@@ -2,7 +2,7 @@
     <!-- // xs12 sm6 md4 lg3 -->
     <v-flex xs12 sm6 md4 lg3>
       <v-card hover class="ma-3" min-height="500" elevation="9">
-        <v-layout column align-center fill-width class="text-center">
+        <v-layout column align-center fill-width class="text-center d-flex justify-center">
           <!-- height="700" aspect-ratio="9/16" -->
           <v-img max-height="380" @click="toDetail(movie)"
           :src="movie.poster_path"></v-img>

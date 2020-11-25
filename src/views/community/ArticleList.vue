@@ -16,12 +16,12 @@
         <tbody>
           <tr v-for="(article, idx) in articles"
           :key="idx">
-            <td>{{ article.user }}</td>
+            <td>{{ article.user_name }}</td>
             <td>
               <div @click="toDetail(article)">{{ article.title }}</div>
               <!-- <router-link v-bind:to="{name: 'ArticleDetail', params: {article_id: article.id}}">{{ article.title }}</router-link> -->
             </td>
-            <td>{{ article.created_at }}</td>
+            <td>{{ article.created_at | moment('YYYY-MM-DD') }}</td>
             <!-- <td>
               <router-link v-bind:to="{name: 'hero-edit', params: {hero_id: hero.id}}">
                 Edit
@@ -55,6 +55,10 @@
 
 <script>
 import axios from 'axios'
+import Vue from 'vue'
+import vueMoment from 'vue-moment'
+
+Vue.use(vueMoment)
 
 const SERVER_URL = process.env.VUE_APP_SERVER_URL
 

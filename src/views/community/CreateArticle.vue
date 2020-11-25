@@ -77,13 +77,12 @@ export default {
 
 
 <style>
-  form {
-    label {
+  form  > label {
       display: block;
       margin-bottom: 0.5rem;
       font-weight: bold;
     }
-    input, textarea {
+  input, textarea {
       width: 100%;
       min-width: 100%;
       max-width: 100%;
@@ -94,5 +93,4 @@ export default {
       font-size: 1.6rem;
       border: 0.1rem solid rgba(0, 0, 0, 0.1);
     }
-  }
 </style>

@@ -16,7 +16,7 @@
                 type="text" 
                 v-model.trim="reply" 
                 class="reply--text" 
-                placeholder="댓글을 남겨주세요~"
+                placeholder="Leave a comment..."
                 maxlength="250"
                 required
                 @keyup.enter="submitComment"
