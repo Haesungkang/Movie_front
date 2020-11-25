@@ -8,12 +8,11 @@
         <router-link :to="{ name: 'MovieList'}">Movie List</router-link> |
         <router-link :to="{ name: 'Recommend' }">Recommend</router-link> |
         <router-link :to="{ name: 'Community' }">Community</router-link> |
-        <router-link @click.native="logout" to="#">Logout</router-link> 
+        <!-- <router-link @click.native="logout" to="#">Logout</router-link>  -->
       </span>
       <span v-else>
-        <router-link :to="{ name: 'Signup' }">Signup</router-link> |
-        <router-link :to="{ name: 'Login' }">Login</router-link> |
-        <router-link :to="{ name: 'SuperheroesList' }">SuperheroesList</router-link>
+        <!-- <router-link :to="{ name: 'Signup' }">Signup</router-link> |
+        <router-link :to="{ name: 'Login' }">Login</router-link> | -->
       </span>
     </div>
     <router-view @login="$store.state.isLogin"/>

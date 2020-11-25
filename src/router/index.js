@@ -17,8 +17,7 @@ import Detail from '@/views/Detail.vue'
 import ArticleList from '@/views/community/ArticleList'
 import CreateArticle from '@/views/community/CreateArticle'
 import CreateComment from '@/views/community/CreateComment'
-import SuperheroesList from '@/views/community/SuperheroesList'
-import ArticleDetail from '@/components/ArticleDetail'
+import ArticleDetail from '@/views/community/ArticleDetail'
 
 Vue.use(VueRouter)
 
@@ -88,11 +87,6 @@ const routes = [
     path: '/community/createcomment',
     name: 'CreateComment',
     component: CreateComment
-  },
-  {
-    path: '/superheroeslist',
-    name: 'SuperheroesList',
-    component: SuperheroesList
   },
   {
     path: '/articledetail',
