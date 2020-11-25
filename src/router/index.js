@@ -36,7 +36,8 @@ const routes = [
   {
     path: '/recommend',
     name: 'Recommend',
-    component: Recommend
+    component: Recommend,
+    props: true
   },
   {
     path: '/community',

@@ -63,11 +63,11 @@
             text: "Top Vote Average Movies",
             route: "/top-vote-average-movies"
           },
-          // {
-          //   icon: "mdi-medal",
-          //   text: "Top Rated Shows",
-          //   route: "/top-rated-shows"
-          // },
+          {
+            icon: "mdi-medal",
+            text: "Recommended Movies",
+            route: "/recommend"
+          },
           {
             icon: "mdi-information",
             text: "About",

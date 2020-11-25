@@ -6,17 +6,20 @@
       >
 
         <v-layout column align-center fill-height class="text-center">
-        <v-img max-height="500" max-width="300"
-        :src="movie.poster_path"></v-img>
+        <v-img 
+        max-height="500" max-width="300" 
+        :src="movie.poster_path"
+        @click="toDetail(movie)"
+        ></v-img>
         <!-- {{ movie.title }} -->
 
         <!-- <v-img :src="movie.poster_path"></v-img> -->
-        <v-card-title>{{movie.title}}</v-card-title>
+        <v-card-title >{{movie.title}}</v-card-title>
         </v-layout>
       </vue-glide-slide>
       <template slot="control">
-        <button data-glide-dir="<">PREV</button>
-        <button data-glide-dir=">">NEXT</button>
+        <button class="btn" data-glide-dir="<">PREVIOUS</button>
+        <button class="btn" data-glide-dir=">">NEXT</button>
       </template>
     </vue-glide>
     </v-content>
@@ -57,6 +60,7 @@ export default {
     data: function () {
       return {
         movies: [],
+        
       }
     },
     methods: {
@@ -66,11 +70,19 @@ export default {
           this.movies = res.data
         })
         .catch(err => console.log(err))
-      }
+      },
+      toDetail: function (movie) {
+        this.$router.push({ name: "Detail", query : { movie : movie }})
+      },
+
     },
+
+
     created: function () {
       this.getMovie()
     },
+
+    
 }
 </script>
 
@@ -82,6 +94,13 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  .btn {
+    border: #2c3e50;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    
+  }
   .demo {
     .glide {
       &__slide {
