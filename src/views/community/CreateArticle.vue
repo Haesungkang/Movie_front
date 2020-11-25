@@ -8,7 +8,7 @@
   <template id="add-article">
   <section>
     <h2>Create Article</h2>
-    <form v-on:submit.prevent="createArticle">
+    <form v-on:submit.prevent="createArticle" id="form">
       <label>Title</label>
       <br>
       <input type="text" v-model.trim="title" required>
@@ -77,7 +77,7 @@ export default {
 
 
 <style>
-  form {
+  #form {
     label {
       display: block;
       margin-bottom: 0.5rem;
