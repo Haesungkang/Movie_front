@@ -6,12 +6,15 @@
       >
 
         <v-layout column align-center fill-height class="text-center">
-        <v-img max-height="500" max-width="300"
-        :src="movie.poster_path"></v-img>
+        <v-img 
+        max-height="500" max-width="300" 
+        :src="movie.poster_path"
+        @click="toDetail(movie)"
+        ></v-img>
         <!-- {{ movie.title }} -->
 
         <!-- <v-img :src="movie.poster_path"></v-img> -->
-        <v-card-title>{{movie.title}}</v-card-title>
+        <v-card-title >{{movie.title}}</v-card-title>
         </v-layout>
       </vue-glide-slide>
       <template slot="control">
@@ -67,11 +70,19 @@ export default {
           this.movies = res.data
         })
         .catch(err => console.log(err))
-      }
+      },
+      toDetail: function (movie) {
+        this.$router.push({ name: "Detail", query : { movie : movie }})
+      },
+
     },
+
+
     created: function () {
       this.getMovie()
     },
+
+    
 }
 </script>
 
