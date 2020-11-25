@@ -2,6 +2,7 @@
   <div>
     <h3>CreateArticle</h3>
     <input type="text" v-model.trim="title" @keypress.enter="createArticle">
+    <input type="text" v-model.trim="content">
     <button @click="createArticle">+</button>
   </div>
 </template>
