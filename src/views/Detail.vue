@@ -62,6 +62,7 @@ export default {
         user: 'exampleCreator'
       },
       // username으로 받을수있게 설정 및 delete 마무리
+      // avatar는 랜덤으로 색깔 배정
       current_user: {
         avatar: 'http://via.placeholder.com/100x100/a74848',
         user: this.userName
@@ -83,4 +84,5 @@ export default {
 </script>
 
 <style>
+
 </style>

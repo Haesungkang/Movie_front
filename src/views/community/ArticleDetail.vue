@@ -1,172 +1,56 @@
 <template>
   <div>
-    <template id="article-content">
-    <section class="grid">
-      <h2>{{ $route.query.article.title }}</h2>
-      <p>
-        <br>
-        <b>Username:</b> {{ $route.query.article.user_name }}
-        <br>
-        <b>Date:</b> {{ $route.query.article.created_at | moment("YYYY-MM-DD") }}
-        <br>
-        <b>Content:</b> {{ $route.query.article.content }}
-        <br>
-      </p>
-
-      <br>
-      <router-link v-bind:to="'/community'">Back</router-link>
-      <!-- {{article.user_name}} -->
-    </section>
-  </template>
-
-
-<!-- <div class="comments-start">
-  <div class="comments-outside">
-      <div class="comments-header">
-        <div class="comments-stats">
-            <span><i class="fa fa-thumbs-up"></i> {{ likes }}</span>
-            <span><i class="fa fa-comment"></i> {{ comments.length }}</span>
-          </div>
-          <div class="post-owner">
-            <div class="avatar">
-              <img :src="creator.avatar" alt="">
-            </div>
-            <div class="username">
-              <a href="#">@{{ creator.user }}</a>
-            </div>
-          </div>
-        </div> -->
-        <comments 
-          :comments_wrapper_classes="['custom-scrollbar', 'comments-wrapper']"
-          :comments="comments"
-          :current_user="current_user"
-          @submit-comment="submitComment"
-        ></comments>
+    <h2>{{ $route.query.article.title }}</h2>
+    <br>
+    <br>
+    <div>
+      {{ hiComments }}
     </div>
-<!-- </div>
-</div> -->
+  </div>
 </template>
+
 <script>
-import Comments from '@/components/Comments.vue'
+import axios from 'axios'
+const SERVER_URL = process.env.VUE_APP_SERVER_URL
 
 export default {
-    name: 'ArticleDetail',
-      components: {
-    Comments
-  },
-    props: {
-        article: Object
-    },
-    created() {
-      this.userName = localStorage.getItem("user")
-    },
-    data() {
+  name: 'ArticleDetail',
+  data: function () {
     return {
-      
-      creator: {
-        avatar: 'http://via.placeholder.com/100x100/a74848',
-        user: 'exampleCreator'
-      },
-      // username으로 받을수있게 설정 및 delete 마무리
-      current_user: {
-        avatar: 'http://via.placeholder.com/100x100/a74848',
-        user: this.userName
-      },
-      comments: [
-        // {
-        //   id: 1,
-        //   user: 'example',
-        //   avatar: 'http://via.placeholder.com/100x100/a74848',
-        //   text: 'lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor ',
-        // },
-        // {
-        //   id: 2,                            
-        //   user: 'example1',
-        //   avatar: 'http://via.placeholder.com/100x100/2d58a7',
-        //   text: 'lorem ipsum dolor',
-        // },
-        // {
-        //   id: 3,                            
-        //   user: 'example2',
-        //   avatar: 'http://via.placeholder.com/100x100/36846e',
-        //   text: 'lorem ipsum dolor again',
-        // },
-      ]
+      comments: []
+    }
+  },
+  computed: {
+    hiComments: function () {
+      return this.comments
     }
   },
   methods: {
-    submitComment: function(reply) {
-      this.comments.push({
-        id: this.comments.length + 1,
-        user: this.current_user.user,
-        avatar: this.current_user.avatar,
-        text: reply
-      });
+    setToken: function () {
+      const token = localStorage.getItem('jwt')
+      const config = {
+        headers: {
+          Authorization: `JWT ${token}`
+        }
+      }
+      return config
+    },
+    getComments: function () {
+      const config = this.setToken()
+      const article = this.$route.query.article
+      axios.get(`${SERVER_URL}/community/${article.id}/comment_list/`, config)
+        .then(response => {
+          this.comments = response.data
+        })
+        .catch(error => console.log(error))
     }
+  },
+  created: function () {
+    this.getComments()
   }
 }
 </script>
 
 <style>
-.comments-start {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 
-a {
-  text-decoration: none;
-}
-
-hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #ececec;
-  margin: 1em 0;
-  padding: 0;
-}
-
-.comments-outside {
-  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-  margin: 0 auto;
-  max-width: 600px;
-}
-
-.comments-header {
-  background-color: #C8C8C8;
-  padding: 10px;
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  color: #333;
-  min-height: 80px;
-  font-size: 20px;
-}
-
-.comments-header .comments-stats span {
-  margin-left: 10px;
-}
-
-.post-owner {
-  display: flex;
-  align-items: center;
-}
-
-.post-owner .avatar > img {
-  width: 30px;
-  height: 30px;
-  border-radius: 100%;
-}
-
-.post-owner .username {
-  margin-left: 5px;
-}
-
-.post-owner .username > a {
-  color: #333;
-}
 </style>

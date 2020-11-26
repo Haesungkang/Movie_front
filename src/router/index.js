@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Glide from '@/components/Glide'
 import GlideSlide from '@/components/GlideSlide'
+import CommentForm from '@/components/CommentForm'
+import Comment from '@/components/Comment'
 
 import Home from '../views/Home.vue'
 import MovieList from '@/views/MovieList.vue'
@@ -14,10 +16,9 @@ import TopVoteAverageMovies from '@/views/TopVoteAverageMovies.vue'
 import About from '@/views/About.vue'
 import Detail from '@/views/Detail.vue'
 
+import ArticleDetail from '@/views/community/ArticleDetail'
 import ArticleList from '@/views/community/ArticleList'
 import CreateArticle from '@/views/community/CreateArticle'
-import CreateComment from '@/views/community/CreateComment'
-import ArticleDetail from '@/views/community/ArticleDetail'
 
 Vue.use(VueRouter)
 
@@ -84,14 +85,19 @@ const routes = [
     component: CreateArticle
   },
   {
-    path: '/community/createcomment',
-    name: 'CreateComment',
-    component: CreateComment
-  },
-  {
     path: '/articledetail',
     name: 'ArticleDetail',
     component: ArticleDetail
+  },
+  {
+    path: '/comment',
+    name: 'Comment',
+    component: Comment
+  },
+  {
+    path: '/commentform',
+    name: 'CommentForm',
+    component: CommentForm
   },
 ]
 
