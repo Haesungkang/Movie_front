@@ -4,7 +4,7 @@
       <v-app-bar-nav-icon id="drawerIcon" @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title :to="{ name: 'Home' }" class="text-uppercase white--text">
         <span
-        class="font-weight-light">Hyunji, JaeYoung, HaeSung</span>
+        class="font-weight-light">SSAMANCO :3</span>
       </v-toolbar-title>
         <v-spacer></v-spacer>
           <v-list v-if="$store.state.isLogin">
@@ -16,7 +16,7 @@
           </v-list>
     </v-app-bar>
 
-    <v-navigation-drawer app v-model="drawer" color="grey accent-2">
+    <v-navigation-drawer app v-model="drawer" class="soft-mocha">
       <v-layout column align-center>
         <v-flex class="my-5">
           <!-- <v-img max-width="100px" src=""></v-img> -->
@@ -96,5 +96,11 @@
   };
 </script>
 
-<style scoped>
+<style>
+/* .woolly-beige {
+  background-color: rgb(247, 224, 193) !important;
+} */
+.soft-mocha {
+  background-color: rgb(206, 173, 155) !important;
+}
 </style>
