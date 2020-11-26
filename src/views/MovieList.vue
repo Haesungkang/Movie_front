@@ -65,7 +65,7 @@ export default {
     },
     methods: {
       getMovie: function () {
-        axios.get('http://127.0.0.1:8000/movie_info/')
+        axios.get('http://127.0.0.1:8000/nowplaying/')
         .then(res => {
           this.movies = res.data
         })

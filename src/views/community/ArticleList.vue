@@ -1,6 +1,6 @@
 <template>
-  <div>
-  <main id="app" class="grid">
+  <div id="articlelist">
+  <main id="movie" class="grid">
     <h1><b>Article</b> list</h1>
     <hr>
     <section>
@@ -121,148 +121,150 @@ export default {
 }
 </script>
 
-<style scoped>
-  .article-btn {
-    margin-left: 10px;
-  }
+<style lang="scss">
+#movie {
+.article-btn {
+  margin-left: 10px;
+}
 
-  *, *:after, *:before { box-sizing: inherit; }
+*, *:after, *:before { box-sizing: inherit; }
 
-  html {
-    box-sizing: border-box;
-    font-size: 62.5%;
-  }
-  body {
-    margin: 0;
-    font-family: 'Montserrat', 'Arial', sans-serif;
-    font-size: 1.8rem;
-    color: #111;  
-    background: #f4f4f4;
-  }
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+body {
+  margin: 0;
+  font-family: 'Montserrat', 'Arial', sans-serif;
+  font-size: 1.8rem;
+  color: #111;  
+  background: #f4f4f4;
+}
 
-  h1, h2 {
-    margin: 0 0 1rem 0;
-    font-weight: normal;
-    text-align: center;
-  }
-  b { font-weight: bold; }
-  p { 
-    margin: 0;
-    line-height: 2.0;
-  }
+h1, h2 {
+  margin: 0 0 1rem 0;
+  font-weight: normal;
+  text-align: center;
+}
+b { font-weight: bold; }
+p { 
+  margin: 0;
+  line-height: 2.0;
+}
 
-  a {
-    color: #111;
-    border-bottom: 0.1rem solid rgba(0, 0, 0, 0.10); 
-    text-decoration: none;
-    transition: all 0.3s ease;
-    &:hover {
-      color: #f04;
-      border-bottom: 0.1rem solid #f04; 
-    }
+a {
+  color: #111;
+  border-bottom: 0.1rem solid rgba(0, 0, 0, 0.10); 
+  text-decoration: none;
+  transition: all 0.3s ease;
+  &:hover {
+    color: #f04;
+    border-bottom: 0.1rem solid #f04; 
   }
+}
 
-  hr {
-    width: 70%;
-    margin: 0 auto 2rem;
-    border: 0;
-    border-bottom: 0.1rem solid rgba(0, 0, 0, 0.1);
-  }
+hr {
+  width: 70%;
+  margin: 0 auto 2rem;
+  border: 0;
+  border-bottom: 0.1rem solid rgba(0, 0, 0, 0.1);
+}
 
-  form {
-    label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: bold;
-    }
-    input, textarea {
-      width: 100%;
-      min-width: 100%;
-      max-width: 100%;
-      min-height: 2rem;
-      margin: 0 0 1rem 0;
-      padding: 0.5rem;
-      font: inherit;
-      font-size: 1.6rem;
-      border: 0.1rem solid rgba(0, 0, 0, 0.1);
-    }
-  }
-
-  table {
-    width: 100%;
-    margin: 2rem 0 4rem 0;
-    border-spacing: 0;
-    td, th {
-      border-bottom: 0.1rem solid rgba(0, 0, 0, 0.05);
-    }
-    th {
-      padding: 2.0rem 1.0rem;
-      text-align: left;
-    }
-    td {
-      padding: 1.8rem 1.0rem;
-      transition: all 0.3s ease;
-      .btn { display: inline; }
-    }
-    tr:hover td { background: rgba(0, 0, 0, 0.03); }
-  }
-
-  .btn {
+form {
+  label {
     display: block;
-    width: 100%;
-    margin: 2rem 0 2rem 0;
-    padding: 1rem 2rem;  
-    color: #111;
-    background: transparent;
-    border: 0.1rem solid #111;
-    outline: 0;
-    border-radius: 0.3rem;
-    
-    font: inherit;
+    margin-bottom: 0.5rem;
     font-weight: bold;
-    line-height: 1;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    user-select: none;
-    
-    transition: all 0.25s ease;
-    
-    &:visited { color: #111; }
-    &:hover, &:focus {
-      border: 0.1rem solid #f04;
-      color: #f04; 
-    }
-    
-    &.btn-main {
-      border: 0;
-      color: #fff;
-      background: #44a;
-      &:visited { color: #fff; }
-      &:hover, &:focus { background: #f04; }
-    }
   }
+  input, textarea {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 2rem;
+    margin: 0 0 1rem 0;
+    padding: 0.5rem;
+    font: inherit;
+    font-size: 1.6rem;
+    border: 0.1rem solid rgba(0, 0, 0, 0.1);
+  }
+}
 
-  .grid {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+table {
+  width: 100%;
+  margin: 2rem 0 4rem 0;
+  border-spacing: 0;
+  td, th {
+    border-bottom: 0.1rem solid rgba(0, 0, 0, 0.05);
   }
+  th {
+    padding: 2.0rem 1.0rem;
+    text-align: left;
+  }
+  td {
+    padding: 1.8rem 1.0rem;
+    transition: all 0.3s ease;
+    .btn { display: inline; }
+  }
+  tr:hover td { background: rgba(0, 0, 0, 0.03); }
+}
 
-  #app {
-    width: 70rem;
-    margin: 4rem auto;
-    padding: 4rem;
-    border-radius: 0.3rem;
-    background: #fff;
-    box-shadow: 0 0 2rem rgba(0, 0, 0, 0.10),
-                0 0 3rem rgba(0, 0, 0, 0.03);
-                
-    section { width: 100%; }
+.btn {
+  display: block;
+  width: 100%;
+  margin: 2rem 0 2rem 0;
+  padding: 1rem 2rem;  
+  color: #111;
+  background: transparent;
+  border: 0.1rem solid #111;
+  outline: 0;
+  border-radius: 0.3rem;
+  
+  font: inherit;
+  font-weight: bold;
+  line-height: 1;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  
+  transition: all 0.25s ease;
+  
+  &:visited { color: #111; }
+  &:hover, &:focus {
+    border: 0.1rem solid #f04;
+    color: #f04; 
   }
+  
+  &.btn-main {
+    border: 0;
+    color: #fff;
+    background: #44a;
+    &:visited { color: #fff; }
+    &:hover, &:focus { background: #f04; }
+  }
+}
 
-  @media only screen and (max-width: 48.0rem) {
-    #app { width: 90%; }
-  }
+.grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+}
+#articlelist {
+  width: 70rem;
+  margin: 4rem auto;
+  padding: 4rem;
+  border-radius: 0.3rem;
+  background: #fff;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.10),
+              0 0 3rem rgba(0, 0, 0, 0.03);
+              
+  section { width: 100%; }
+}
+
+@media only screen and (max-width: 48.0rem) {
+  #app { width: 90%; }
+}
 </style>

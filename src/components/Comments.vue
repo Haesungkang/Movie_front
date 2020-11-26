@@ -14,7 +14,7 @@
             </div>
             <input 
                 type="text" 
-                v-model.trim="reply" 
+                v-model.trim="content" 
                 class="reply--text" 
                 placeholder="댓글을 남겨주세요~"
                 maxlength="250"
@@ -28,26 +28,98 @@
 
 <script>
 import singleComment from './SingleComment'
-    export default {
-        name: 'comments',
-        components: {
-            singleComment
-        },
-        data() {
-            return {
-                reply: ''
+import axios from 'axios'
+
+const SERVER_URL = process.env.VUE_APP_SERVER_URL
+
+
+export default {
+    name: 'comments',
+    components: {
+        singleComment
+    },
+    data() {
+        return {
+            articles: [],
+            content: '',
+            // reply: ''
+        }
+    },
+    props: ['comments', 'current_user', 'comments_wrapper_classes'],
+
+    methods: {
+        setToken: function () {
+        const token = localStorage.getItem('jwt')
+
+        const config = {
+            headers: {
+            Authorization: `JWT ${token}`
             }
+        }
+        return config
         },
-        methods: {
-            submitComment() {
-                if(this.reply != '') {
-                    this.$emit('submit-comment', this.reply);
-                    this.reply = '';
+
+        getArticles: function () {
+        const config = this.setToken()
+
+        axios.get(`${SERVER_URL}/community/`, config)
+            .then((res) => {
+            // console.log(res)
+            this.articles = res.data
+            })
+            .catch((err) => {
+            console.log(err)
+        })
+        },
+
+        submitComment: function(article) {
+
+            const config = this.setToken()
+
+            const CommentItem = {
+                    content: this.content,
                 }
+
+            if (CommentItem) {
+                
+                axios.post(`${SERVER_URL}/community/${article.id}/comments/`, CommentItem, config)
+                .then((res) => {
+                    console.log(res)
+                    const targetArticleIdx = this.articles.findIndex((article) => {
+                    return article.id === res.data.id
+                })
+                this.articles.splice(targetArticleIdx, 1)
+                this.$router.push({ name: 'ArticleDetail' })
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
             }
         },
-        props: ['comments', 'current_user', 'comments_wrapper_classes']
+
+        // if(this.reply != '') {
+        //     this.$emit('submit-comment', this.reply);
+        //     this.reply = '';
+        // }
+        // },
+
+        // submitComment() {
+        //     if(this.reply != '') {
+        //         this.$emit('submit-comment', this.reply);
+        //         this.reply = '';
+        //     }
+        // }
+    },
+    created: function () {
+        if (localStorage.getItem('jwt')) {
+            this.getArticles()
+        } else {
+            this.$router.push({ name: 'Login' })
     }
+  }
+
+}
+
 </script>
 
 <style scoped>
