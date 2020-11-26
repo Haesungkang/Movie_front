@@ -1,6 +1,15 @@
 <template>
   <div class="comments">
   <div class="reply">
+    <!-- <v-rating
+      background-color="yellow lighten-3"
+      color="yellow"
+      type="number"
+      half-increments
+      v-model="rating"
+    >
+    </v-rating>
+    {{rating}} -->
     <input 
     class="reply--text" 
     placeholder="저희는 영화를 숫자로 줄 세우지 않습니다. 영화에 대한 감상을 서술형으로 작성해주세요.(최대 1000자)" 
@@ -25,6 +34,7 @@ export default {
   data: function () {
     return {
       content: '',
+      rating: 0,
     }
   },
   methods: {
@@ -41,13 +51,15 @@ export default {
       if (this.content) {
         
         const movie = this.$route.query.movie
+        // const ratingNumber = { rating : this.rating }
         const commentItem = {
           content: this.content,
         }
         axios.post(`${SERVER_URL}/nowplaying/${movie.id}/comments/`, commentItem, this.setToken())
-          .then(() => this.$emit('write-comment', movie.id))
+          .then(() => this.$emit('write-comment'))
           .catch(error => console.log(error.response))
         this.content = ''
+        // this.rating = 0
       }
     },
   }

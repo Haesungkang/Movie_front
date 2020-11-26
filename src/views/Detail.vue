@@ -1,6 +1,6 @@
 <template>
-  <v-container class="mx-auto" justify-center id="cardstyle">
-    <v-card align-content-center justify-center class="text-center cardcolor" max-height="1900" max-width="500">
+  <v-container align-center class="mx-auto" justify-center id="cardstyle">
+    <v-card align-content-center justify-center class="text-center cardcolor ml-10" max-height="1900" max-width="500">
     <v-img
     :src="$route.query.movie.poster_path">
     </v-img>
@@ -32,9 +32,21 @@
       </router-link>
     </v-card-text>
     </v-card>
-    <div v-for="comment in hiComments" :key="comment.id">
+    <!-- <div v-for="comment in hiComments" :key="comment.id">
       {{ comment.content }}
-    </div>
+    </div> -->
+    <table>
+      <thead>
+        <th>Username</th>
+        <th>Comment</th>
+      </thead>
+      <tbody>
+        <tr v-for="comment in hiComments" :key="comment.id" :comment="comment">
+          <td>{{ comment.user_name }}</td>
+          <td>{{ comment.content }}</td>
+        </tr>
+      </tbody>
+    </table>
       <MovieCommentForm @write-comment="writeComment"/>
   </v-container>
 </template>
@@ -104,6 +116,27 @@ export default {
 </script>
 
 <style lang="scss">
+table {
+  width: 100%;
+  margin: 2rem 0 4rem 0;
+  border-spacing: 0;
+  td, th {
+    border-bottom: 0.1rem solid rgba(0, 0, 0, 0.05);
+  }
+  th {
+    padding: 2.0rem 1.0rem;
+    text-align: center;
+    font-size: 15px;
+  }
+  td {
+    padding: 1.8rem 1.0rem;
+    transition: all 0.3s ease;
+    .btn { display: inline; }
+  }
+  tr:hover td { background: rgba(0, 0, 0, 0.03); }
+}
+
+
 #cardstyle {
   .cardcolor {
     background-color:rgba(255, 245, 224, 0.918);
