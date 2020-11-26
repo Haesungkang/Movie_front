@@ -1,3 +1,35 @@
+<!--
+<template>
+  <div>
+    <div class="mb-3">
+      <!-- <router-link :to="{ name: 'ArticleList' }">
+        <button class="btn btn-dark text-secondary">글 목록</button>
+      </router-link> 
+    </div>
+    <div class="jumbotron">
+      <h2>{{ article.title }}</h2>
+      <hr>
+      <div class="text-right"><small>작성일: {{ article.created_at | moment('YYYY-MM-DD') }}</small></div>
+      <div class="text-right"><small>작성자: {{ article.user }}</small></div>
+      <br>
+      <p>{{ article.content }}</p>
+    </div>
+    <ul v-if="comments" class="jumbotron">
+      <Comment
+        v-for="(comment, idx) in comments"
+        :key="idx"
+        :comment="comment"
+      />
+    </ul>
+    <ul v-else>
+      아직 댓글이 없습니다.
+    </ul>
+    <CommentForm @write-comment="writeComment"/>
+  </div>
+</template>
+-->
+
+
 <template>
   <div>
     <template id="article-content">
@@ -15,39 +47,82 @@
 
       <br>
       <router-link v-bind:to="'/community'">Back</router-link>
-      <!-- {{article.user_name}} -->
+      {{article.user_name}} 
     </section>
   </template>
 
-
-<!-- <div class="comments-start">
-  <div class="comments-outside">
-      <div class="comments-header">
-        <div class="comments-stats">
-            <span><i class="fa fa-thumbs-up"></i> {{ likes }}</span>
-            <span><i class="fa fa-comment"></i> {{ comments.length }}</span>
-          </div>
-          <div class="post-owner">
-            <div class="avatar">
-              <img :src="creator.avatar" alt="">
-            </div>
-            <div class="username">
-              <a href="#">@{{ creator.user }}</a>
-            </div>
-          </div>
-        </div> -->
         <comments 
+        
           :comments_wrapper_classes="['custom-scrollbar', 'comments-wrapper']"
           :comments="comments"
           :current_user="current_user"
           @submit-comment="submitComment"
+
         ></comments>
     </div>
-<!-- </div>
-</div> -->
 </template>
+
 <script>
-import Comments from '@/components/Comments.vue'
+import axios from 'axios'
+import Vue from 'vue'
+import vueMoment from 'vue-moment'
+import Comment from '@/components/Comment.vue'
+import CommentForm from '@/components/CommentForm.vue'
+
+Vue.use(vueMoment)
+
+const SERVER_URL = process.env.VUE_APP_SERVER_URL
+
+// export default {
+//   components: {
+//     Comment,
+//     CommentForm,
+//   },
+//   name: 'ArticleDetail',
+//   data: function () {
+//     return {
+//       article: [],
+//       comments: [],
+//     }
+//   },
+//   methods: {
+//     setToken: function () {
+//       const token = localStorage.getItem('jwt')
+//       const config = {
+//         headers: {
+//           Authorization: `JWT ${token}`
+//         }
+//       }
+//       return config
+//     },
+//     readArticle: function () {
+//       // const article_id = this.$route.params.article_id
+//       axios.get(`${SERVER_URL}/community/${article_id}`, this.setToken())
+//         .then(response => {
+//           this.article = response.data
+//         })
+//         .catch(error => console.log(error))
+//     },
+//     readComments(articleId) {
+//       // const article_id = this.$route.params.article_id
+//       axios.get(`${SERVER_URL}/community/comments`, this.setToken())
+//         .then(response => {
+//           this.comments = response.data.filter(comment => comment.article === articleId)
+//         })
+//         .catch(error => console.log(error))      
+//     },
+//     writeComment(articleId) {
+//       this.readComments(articleId)
+//     }
+//   },
+//   created: function () {
+//     this.readArticle()
+//     this.readComments()
+//     console.log('created')
+//   },
+// }
+// </script>
+
 
 export default {
     name: 'ArticleDetail',
@@ -55,7 +130,11 @@ export default {
     Comments
   },
     props: {
-        article: Object
+        article: Object,
+        // comments: Object,
+        // current_user: Object,
+        // comments_wrapper_classes: Object,
+
     },
     created() {
       this.userName = localStorage.getItem("user")
@@ -95,17 +174,42 @@ export default {
     }
   },
   methods: {
-    submitComment: function(reply) {
-      this.comments.push({
-        id: this.comments.length + 1,
-        user: this.current_user.user,
-        avatar: this.current_user.avatar,
-        text: reply
-      });
+
+    setToken: function () {
+      const token = localStorage.getItem('jwt')
+      const config = {
+        headers: {
+          Authorization: `JWT ${token}`
+        }
+      }
+      return config
+    },
+
+    submitComment: function() {
+      if (this.content) {
+        const articleId = this.$route.params.article_id
+        const commentItem = {
+          content: this.content,
+        }
+        axios.post(`${SERVER_URL}/community/community/${articleId}/comments/`, commentItem, this.setToken())
+          .then(() => this.$emit('submit-comment'))
+          .catch(error => console.log(error.response))
+        this.content = ''
+
+
+
+
+      // this.comments.push({
+      //   id: this.comments.length + 1,
+      //   user: this.current_user.user,
+      //   avatar: this.current_user.avatar,
+      //   text: content
+      // });
     }
   }
 }
 </script>
+
 
 <style>
 .comments-start {

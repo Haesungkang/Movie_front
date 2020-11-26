@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Glide from '@/components/Glide'
 import GlideSlide from '@/components/GlideSlide'
+import CommentForm from '@/components/CommentForm'
+import Comment from '@/components/Comment'
 
 import Home from '../views/Home.vue'
 import MovieList from '@/views/MovieList.vue'
@@ -92,6 +94,16 @@ const routes = [
     path: '/articledetail',
     name: 'ArticleDetail',
     component: ArticleDetail
+  },
+  {
+    path: '/comment',
+    name: 'Comment',
+    component: Comment
+  },
+  {
+    path: '/commentform',
+    name: 'CommentForm',
+    component: CommentForm
   },
 ]
 

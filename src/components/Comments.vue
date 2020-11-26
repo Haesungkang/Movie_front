@@ -7,6 +7,7 @@
                 :key="comment.id"
             ></single-comment>
         </div>
+        <p>{{ article }}</p>
         <hr>
         <div class="reply">
             <div class="avatar">
@@ -20,8 +21,9 @@
                 maxlength="250"
                 required
                 @keyup.enter="submitComment"
+                
             />
-            <button class="reply--button" @click.prevent="submitComment"><i class="fa fa-paper-plane"></i> Send</button>
+            <button class="reply--button" @click.prevent="submitComment(article)"><i class="fa fa-paper-plane"></i> Send</button>
         </div>
     </div>
 </template>
@@ -45,7 +47,18 @@ export default {
             // reply: ''
         }
     },
-    props: ['comments', 'current_user', 'comments_wrapper_classes'],
+    props: 
+
+        // ['comments', 'current_user', 'comments_wrapper_classes', 'article'],
+
+        { 
+        
+        article: Object ,
+        comments: Array,
+        current_user: Object,
+        comments_wrapper_classes: Array
+
+        },
 
     methods: {
         setToken: function () {
@@ -75,20 +88,23 @@ export default {
         submitComment: function(article) {
 
             const config = this.setToken()
+            const articleId = this.$route.params.article_id
 
             const CommentItem = {
                     content: this.content,
+                    // article: this.article
                 }
 
             if (CommentItem) {
-                
-                axios.post(`${SERVER_URL}/community/${article.id}/comments/`, CommentItem, config)
+
+                axios.post(`${SERVER_URL}/community/${articleId}/comments/`, CommentItem, config)
                 .then((res) => {
                     console.log(res)
-                    const targetArticleIdx = this.articles.findIndex((article) => {
-                    return article.id === res.data.id
-                })
-                this.articles.splice(targetArticleIdx, 1)
+                    // const targetArticleIdx = this.articles.findIndex((article) => {
+                    // return article.id === res.data.id
+                // })
+                // this.articles.splice(targetArticleIdx, 1)
+                this.$emit('submit-comment', this.content);
                 this.$router.push({ name: 'ArticleDetail' })
                 })
                 .catch((err) => {
