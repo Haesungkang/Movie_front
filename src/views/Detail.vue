@@ -1,6 +1,6 @@
 <template>
-  <v-container>
-    <v-card align-content-center justify-center class="text-center" max-height="1900" max-width="500">
+  <v-container class="mx-auto" justify-center id="cardstyle">
+    <v-card align-content-center justify-center class="text-center cardcolor" max-height="1900" max-width="500">
     <v-img
     :src="$route.query.movie.poster_path">
     </v-img>
@@ -32,24 +32,23 @@
       </v-btn>
     </v-card-text>
     </v-card>
-    Comment Start
-      <comments 
-        :comments_wrapper_classes="['custom-scrollbar', 'comments-wrapper']"
-        :comments="comments"
-        :current_user="current_user"
-        @submit-comment="submitComment"
-      ></comments>
+    <div v-for="comment in hiComments" :key="comment.id">
+      {{ comment.content }}
+    </div>
+      <MovieCommentForm @write-comment="writeComment"/>
   </v-container>
 </template>
 <script>
-import Comments from '@/components/Comments.vue'
+import axios from 'axios'
+import MovieCommentForm from '@/components/MovieCommentForm.vue'
 
 // import axios from 'axios'
+const SERVER_URL = process.env.VUE_APP_SERVER_URL
 
 export default {
   name: 'Detail',
   components: {
-    Comments
+    MovieCommentForm,
   },
   props: {
    movie: Object
@@ -70,19 +69,44 @@ export default {
       comments: []
     }
   },
+  computed: {
+  hiComments: function () {
+    return this.comments
+  }
+  },
   methods: {
-    submitComment: function(reply) {
-      this.comments.push({
-        id: this.comments.length + 1,
-        user: this.current_user.user,
-        avatar: this.current_user.avatar,
-        text: reply
-      });
+    setToken: function () {
+      const token = localStorage.getItem('jwt')
+      const config = {
+        headers: {
+          Authorization: `JWT ${token}`
+        }
+      }
+      return config
+    },
+    getComments: function () {
+      const config = this.setToken()
+      const movie = this.$route.query.movie
+      axios.get(`${SERVER_URL}/nowplaying/${movie.id}/comment_list/`, config)
+        .then(response => {
+          this.comments = response.data
+        })
+        .catch(error => console.log(error))
+    },
+    writeComment(){
+      this.getComments()
     }
+  },
+  created: function () {
+    this.getComments()
   }
 }
 </script>
 
-<style>
-
+<style scoped>
+/* #cardstyle {
+  .cardcolor {
+    background-color: rgb(145, 99, 65);
+  }
+} */
 </style>

@@ -1,63 +1,30 @@
 <template>
-  <div>
-    <template id="article-content">
-    <section class="grid">
-      <h2>{{ $route.query.article.title }}</h2>
-      <p>
-        <br>
-        <b>Username:</b> {{ $route.query.article.user_name }}
-        <br>
-        <b>Date:</b> {{ $route.query.article.created_at | moment("YYYY-MM-DD") }}
-        <br>
-        <b>Content:</b> {{ $route.query.article.content }}
-        <br>
-      </p>
-
-      <br>
-      <router-link v-bind:to="'/community'">Back</router-link>
-    </section>
-
-  </template>
   <div class="comments">
-  <div :class="comments_wrapper_classes">
-    <div v-for="comment in hiComments" :key="comment.id" :comment="comment">
-      {{ comment.content }}
-    </div>
-      <CommentForm @write-comment="writeComment"/>
+  <div class="reply">
+    <input 
+    class="reply--text" 
+    placeholder="저희는 영화를 숫자로 줄 세우지 않습니다. 영화에 대한 감상을 서술형으로 작성해주세요." 
+    v-model.trim="content" 
+    type="text" 
+    maxlength="250"
+    @keypress.enter="writeComment"
+    />
+  <button class="reply--button" @click.prevent="writeComment"><i class="fa fa-paper-plane"></i> Send</button>
   </div>
-  </div>
-
-
-
-
   </div>
 </template>
 
+
 <script>
 import axios from 'axios'
-import CommentForm from '@/components/CommentForm.vue'
 
 const SERVER_URL = process.env.VUE_APP_SERVER_URL
 
 export default {
-  name: 'ArticleDetail',
-  components: {
-    CommentForm,
-  },
-
-  props: {
-    article: Object
-  },
-
+  name: 'CommentForm',
   data: function () {
     return {
-      comments: []
-    }
-  },
-
-  computed: {
-    hiComments: function () {
-      return this.comments
+      content: '',
     }
   },
   methods: {
@@ -70,26 +37,24 @@ export default {
       }
       return config
     },
-    getComments: function () {
-      const config = this.setToken()
-      const article = this.$route.query.article
-      axios.get(`${SERVER_URL}/community/${article.id}/comment_list/`, config)
-        .then(response => {
-          this.comments = response.data
-        })
-        .catch(error => console.log(error))
+    writeComment: function () {
+      if (this.content) {
+        
+        const movie = this.$route.query.movie
+        const commentItem = {
+          content: this.content,
+        }
+        axios.post(`${SERVER_URL}/nowplaying/${movie.id}/comments/`, commentItem, this.setToken())
+          .then(() => this.$emit('write-comment', movie.id))
+          .catch(error => console.log(error.response))
+        this.content = ''
+      }
     },
-    writeComment(){
-      this.getComments()
-    }
-  },
-  created: function () {
-    this.getComments()
   }
 }
 </script>
 
-<style>
+<style scoped>
 .comments {
     margin-top: 20px;
     padding: 20px;

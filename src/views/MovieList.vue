@@ -17,7 +17,7 @@
         <v-card-title >{{movie.title}}</v-card-title>
         </v-layout>
       </vue-glide-slide>
-      <template slot="control">
+      <template slot="control" class="btnborder">
         <button class="btn" data-glide-dir="<">PREVIOUS</button>
         <button class="btn" data-glide-dir=">">NEXT</button>
       </template>
@@ -95,9 +95,12 @@ export default {
   color: #2c3e50;
   background-color: rgb(255, 245, 224);
   margin-top: 40px;
+  .btnborder {
+    border: rgb(145, 99, 65) !important;
+  }
   .btn {
-    border: #2c3e50;
-    border-radius: 5px;
+    border: rgb(145, 99, 65) !important;
+    border-radius: 10px;
     align-items: center;
     justify-content: center;
   }
