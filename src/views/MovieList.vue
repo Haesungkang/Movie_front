@@ -2,12 +2,12 @@
   <div id="app">
     <v-content>
     <vue-glide class="demo" :bullet="true" v-if="movies.length">
-      <vue-glide-slide v-for="(movie, idx) in movies" :key="idx" :movie="movie"
+      <vue-glide-slide v-for="(movie, idx) in movies"
+      :key="idx" :movie="movie" 
       >
-
         <v-layout column align-center fill-height class="text-center">
         <v-img 
-        max-height="500" max-width="300" 
+        max-height="500" max-width="300"
         :src="movie.poster_path"
         @click="toDetail(movie)"
         ></v-img>

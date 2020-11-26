@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-card align-content-center justify-center class="text-center" max-height="1900" max-width="500">
-    <v-img 
+    <v-img
     :src="$route.query.movie.poster_path">
     </v-img>
     <v-card-title class="d-flex justify-center">
@@ -34,12 +34,12 @@
     </v-card>
     Comment Start
       <comments 
-    :comments_wrapper_classes="['custom-scrollbar', 'comments-wrapper']"
-    :comments="comments"
-    :current_user="current_user"
-    @submit-comment="submitComment"
-  ></comments>
-</v-container>
+        :comments_wrapper_classes="['custom-scrollbar', 'comments-wrapper']"
+        :comments="comments"
+        :current_user="current_user"
+        @submit-comment="submitComment"
+      ></comments>
+  </v-container>
 </template>
 <script>
 import Comments from '@/components/Comments.vue'
