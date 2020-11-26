@@ -1,9 +1,10 @@
 <template>
-<v-container>
-  <div>
+<div>
+<v-form>
+<v-container class="signupstyle">
     <h2>SignUp</h2>
-    <div>
-      <v-text-field
+
+      <v-text-field max-width="500"
       label="Username"
       hide-details="auto"
       type="text"
@@ -11,9 +12,9 @@
       v-model="credentials.username"
       >
     </v-text-field>
-    </div>
-    <div>
-      <v-text-field
+
+
+      <v-text-field max-width="500"
       label="Password"
       hide-details="auto"
       type="password"
@@ -21,9 +22,8 @@
       v-model="credentials.password"
       >
       </v-text-field>
-    </div>
-    <div>
-      <v-text-field
+
+      <v-text-field max-width="500"
       label="passwordConfirmation"
       hide-details="auto"
       type="password"
@@ -31,9 +31,9 @@
       v-model="credentials.passwordConfirmation"
       @keypress.enter="signup">
       </v-text-field>
-    </div>
-  </div>
 </v-container>
+</v-form>
+</div>
 </template>
 
 <script>
@@ -65,3 +65,11 @@ export default {
   }
 }
 </script>
+
+<style>
+
+.loginstyle{ 
+  width: 500px;
+  height: 800px;
+}
+</style>

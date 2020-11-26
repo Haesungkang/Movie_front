@@ -7,6 +7,7 @@
       HyunJi JaeYoung HaeSung</h1>
 
       <v-img contain width="50vw" height="50vh" src="../assets/undraw_horror_movie.svg"></v-img>
+      <!-- <v-img contain width="50vw" height="50vh" src="../assets/homepage.jpg"></v-img> -->
 
       <v-btn min-width="200" class="my-5 alpaca-brown" router to="/movie_info">Explore</v-btn>
     </v-layout>

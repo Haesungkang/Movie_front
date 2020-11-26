@@ -6,7 +6,7 @@
     <section>
       <table>
         <thead>
-          <tr>
+          <tr class='textstyle'>
             <th>User Name</th>
             <th>Title</th>
             <th>Date</th>
@@ -16,12 +16,12 @@
         <tbody>
           <tr v-for="(article, idx) in articles"
           :key="idx">
-            <td>{{ article.user_name }}</td>
+            <td @click="toDetail(article)">{{ article.user_name }}</td>
             <td>
               <div @click="toDetail(article)">{{ article.title }}</div>
               <!-- <router-link v-bind:to="{name: 'ArticleDetail', params: {article_id: article.id}}">{{ article.title }}</router-link> -->
             </td>
-            <td>{{ article.created_at | moment('YYYY-MM-DD') }}</td>
+            <td @click="toDetail(article)">{{ article.created_at | moment('YYYY-MM-DD') }}</td>
             <!-- <td>
               <router-link v-bind:to="{name: 'hero-edit', params: {hero_id: hero.id}}">
                 Edit
@@ -198,7 +198,8 @@ table {
   }
   th {
     padding: 2.0rem 1.0rem;
-    text-align: left;
+    text-align: center;
+    font-size: 15px;
   }
   td {
     padding: 1.8rem 1.0rem;
@@ -231,20 +232,21 @@ table {
   
   &:visited { color: #111; }
   &:hover, &:focus {
-    border: 0.1rem solid #f04;
-    color: #f04; 
+    border: 0.1rem solid rgb(145, 99, 65);
+    color:rgb(145, 99, 65); 
   }
   
   &.btn-main {
     border: 0;
     color: #fff;
-    background: #44a;
+    background: rgb( 206, 173, 155, 1);
     &:visited { color: #fff; }
-    &:hover, &:focus { background: #f04; }
+    &:hover, &:focus { background:rgb(145, 99, 65); }
   }
 }
 
 .grid {
+  background-color: rgb(247,224,193,1);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -254,12 +256,12 @@ table {
 }
 #articlelist {
   width: 70rem;
-  margin: 4rem auto;
-  padding: 4rem;
+  margin: 3rem auto;
+  padding: 5rem;
   border-radius: 0.3rem;
-  background: #fff;
+  background: rgb(255, 245, 224);
   box-shadow: 0 0 2rem rgba(0, 0, 0, 0.10),
-              0 0 3rem rgba(0, 0, 0, 0.03);
+              0 0 4rem rgba(0, 0, 0, 0.03);
               
   section { width: 100%; }
 }

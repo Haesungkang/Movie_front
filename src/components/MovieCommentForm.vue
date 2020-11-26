@@ -98,7 +98,7 @@ export default {
     display: flex;
     position: relative;
     align-items: center;
-    background-color: #EBEBEB;
+    background-color: rgb(224, 203, 192);
     border-radius: 30px;
     padding: 5px 10px;
     overflow: hidden;
@@ -119,7 +119,7 @@ export default {
     padding: 10px 10px 10px 55px;
     margin-right: 10px;
     border: 0;
-    color: #333;
+    color: black;
     width: 100%;
     outline: 0;
     background-color: transparent;
@@ -137,9 +137,9 @@ export default {
 .reply .reply--button {
     position: absolute;
     right: -100px;
-    border: 1px solid #2a629c;
+    border: 1px solid rgb(145,99,65);
     background-color: transparent;
-    color: #2a629c;
+    color: rgb(145,99,65);
     display: inline-block;
     font-weight: 400;
     text-align: center;
@@ -159,7 +159,7 @@ export default {
 
 .reply .reply--button:hover {
     color: #fff;
-    background-color: #2a629c;
+    background-color:rgb(122, 83, 54);
 }
 
 .reply .reply--button:focus,

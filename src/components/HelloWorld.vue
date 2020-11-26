@@ -1,17 +1,49 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <p>
+    <v-containter>
+    <h2>Github Link</h2>
+    <v-layout align-center justify-center row fill-height>
+      <v-tooltip bottom>
+      <template v-slot:activator="{on}">
+      <v-btn v-on="on" class="mx-5" fab text href="" target="_blank">
+        <v-icon large>mdi-github</v-icon>
+      </v-btn>
+      </template>
+      <span>Hyunji</span>
+      </v-tooltip>
+
+      <v-tooltip bottom>
+      <template v-slot:activator="{on}">
+      <v-btn v-on="on" class="mx-5" fab text href="" target="_blank">
+        <v-icon large>mdi-github</v-icon>
+      </v-btn>
+      </template>
+      <span>HaeSung</span>
+      </v-tooltip>
+
+      <v-tooltip bottom>
+      <template v-slot:activator="{on}">
+      <v-btn v-on="on" class="mx-5" fab text href="" target="_blank">
+        <v-icon large>mdi-github</v-icon>
+      </v-btn>
+      </template>
+      <span>JaeYoung</span>
+      </v-tooltip>
+
+    </v-layout>
+    <br>
+    <br>
+    </v-containter>
       If you have interest in this project,<br>
       check out the
       <a href="https://www.ssafy.com/" target="_blank" rel="noopener">SSAFY official website</a>.
-    </p>
-    <h3>Github Links</h3>
-    <ul>
+
+    <!-- <ul>
       <li><a href="#" target="_blank" rel="noopener">Hyunji Kim</a></li>
       <li><a href="#" target="_blank" rel="noopener">Jaeyoung Choi</a></li>
       <li><a href="#" target="_blank" rel="noopener">HaeSung Kang</a></li>
-    </ul>
+    </ul> -->
   </div>
 </template>
 

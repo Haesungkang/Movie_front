@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="@/assets/clapperboard.png" width="200">
-    <HelloWorld msg="Welcome to LocalJay's website!"/>
+    <img alt="Vue logo" src="@/assets/aboutpage1.png" width="200">
+    <HelloWorld msg="About LocalJayStrongCastle's website!"/>
   </div>
 </template>
 

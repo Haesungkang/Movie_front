@@ -1,7 +1,7 @@
 <template>
     <!-- // xs12 sm6 md4 lg3 -->
     <v-flex xs12 sm6 md4 lg3>
-      <v-card class="ma-3" min-height="500" elevation="9">
+      <v-card class="ma-3 cardcolor" min-height="500" elevation="9">
         <v-layout column align-center fill-width class="text-center d-flex justify-center">
           <!-- height="700" aspect-ratio="9/16" -->
           <v-img max-height="380" @click="toDetail(movie)"
@@ -31,9 +31,9 @@
           <v-progress-linear
             buffer-value="100"
             height="25"
-            color="orange"
+            color="#e3cfb0"
             :value="movie.vote_average*10"
-            class="font-weight-heavy my-5 linearcolor"
+            class="font-weight-heavy my-5"
           >
           {{movie.vote_average}}
           </v-progress-linear>
@@ -83,16 +83,16 @@ export default {
   }
   .v-card:hover #synopsis {
     /* background: #303030; */
-    background:  rgb(251, 201, 109) !important;
+    background:  rgba(209, 191, 164, 0.63) !important;
   }
   .linearcolor {
     background: rgb(239, 157, 112) !important;
   }
   .cardcolor {
-    background: rgb(145, 99, 65) !important;
+    background: rgb(255, 245, 224) !important;
   }
   #synopsis {
-    background: rgb(239, 157, 112);
+    background: rgb(227, 207, 176);
   }
   .camel-sand {
   background-color: rgb(227, 207, 176) !important;
