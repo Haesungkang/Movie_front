@@ -1,20 +1,20 @@
 <template>
-<v-card>
-  <v-container>
-  <div>
+<div>
+  <v-form>
+    <v-container class="loginstyle">
+  
     <h2>Login</h2>
     
-    <div>
-      <v-text-field 
+
+      <v-text-field max-width="500"
         label="User Name"
         hide-details="auto"
         type="text"
         id="username"
         v-model="credentials.username">
       </v-text-field>    
-    </div>
-    <div>
-      <v-text-field
+
+      <v-text-field max-width="500"
         label="Password"
         hide-details="auto"
         type="password"
@@ -22,10 +22,10 @@
         v-model="credentials.password"
         @keypress.enter="login">
       </v-text-field>  
-    </div>
+
+    </v-container>
+  </v-form>
   </div>
-  </v-container>
-</v-card>
 </template>
 
 <script>
@@ -60,3 +60,11 @@ export default {
   }
 }
 </script>
+
+<style>
+.loginstyle{ 
+  width: 500px;
+  height: 800px;
+}
+
+</style>

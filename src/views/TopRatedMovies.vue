@@ -9,13 +9,12 @@
     ></media-nav> -->
     <!-- <media-grid :movies="movies"></media-grid> -->
     <v-container>
-       <v-tooltip top>
+       <v-tooltip top >
           <template v-slot:activator="{on}">
             <v-btn
               v-on="on"
               small
-              color="green"
-              class="criteriaSelector mx-3 mt-3"
+              class="criteriaSelector mx-3 mt-3 camel-sand"
               @click="sortBy('popularity')"
             >
               <v-icon left>mdi-account-heart</v-icon>
@@ -30,8 +29,7 @@
             <v-btn
               v-on="on"
               small
-              color="green"
-              class="criteriaSelector mx-3 mt-3"
+              class="criteriaSelector mx-3 mt-3 yolk-yellow"
               @click="sortBy('vote_average')"
             >
               <v-icon left>mdi-star</v-icon>
@@ -45,8 +43,7 @@
             <v-btn
               v-on="on"
               small
-              color="green"
-              class="criteriaSelector mx-3 mt-3"
+              class="criteriaSelector mx-3 mt-3 dawn-corall"
               @click="sortBy('release_date')"
             >
               <v-icon left>mdi-calendar</v-icon>
@@ -128,4 +125,15 @@
 </script>
 
 <style>
+.camel-sand {
+  background-color: rgb(227, 207, 176) !important;
+}
+
+.yolk-yellow {
+  background-color: rgb(251, 201, 109) !important;
+}
+
+.dawn-corall {
+  background-color: rgb(239, 157, 112) !important;  
+}
 </style>

@@ -1,7 +1,7 @@
 <template>
     <!-- // xs12 sm6 md4 lg3 -->
     <v-flex xs12 sm6 md4 lg3>
-      <v-card hover class="ma-3" min-height="500" elevation="9">
+      <v-card class="ma-3" min-height="500" elevation="9">
         <v-layout column align-center fill-width class="text-center d-flex justify-center">
           <!-- height="700" aspect-ratio="9/16" -->
           <v-img max-height="380" @click="toDetail(movie)"
@@ -21,7 +21,7 @@
             <v-expansion-panels disabled="disabled" v-else focusable>
               <v-expansion-panel id="synopsis">
                 <v-expansion-panel-header>
-                  <span class="text-center">줄거리가 없습니다</span>
+                  <span class="text-center">알아서맞춰보세요~</span>
                 </v-expansion-panel-header >
               </v-expansion-panel>
             </v-expansion-panels>
@@ -30,11 +30,10 @@
           <!-- v-model="movie.vote_average" -->
           <v-progress-linear
             buffer-value="100"
-            background-color="green lighten-3"
-            color="green"
             height="25"
+            color="orange"
             :value="movie.vote_average*10"
-            class="font-weight-heavy my-5"
+            class="font-weight-heavy my-5 linearcolor"
           >
           {{movie.vote_average}}
           </v-progress-linear>
@@ -80,13 +79,22 @@ export default {
 
 <style  scoped>
   .v-card:hover {
-    background: #bff0bb;
+    background: rgb(227, 207, 176);
   }
   .v-card:hover #synopsis {
     /* background: #303030; */
-    background: #ddf1d1;
+    background:  rgb(251, 201, 109) !important;
+  }
+  .linearcolor {
+    background: rgb(239, 157, 112) !important;
+  }
+  .cardcolor {
+    background: rgb(145, 99, 65) !important;
   }
   #synopsis {
-    background: #e3f1e6;
+    background: rgb(239, 157, 112);
   }
+  .camel-sand {
+  background-color: rgb(227, 207, 176) !important;
+}
 </style>

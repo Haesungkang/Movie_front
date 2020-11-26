@@ -1,18 +1,18 @@
 <template>
   <nav>
-    <v-app-bar dark app flat>
+    <v-app-bar class="soft-mocha" app flat>
       <v-app-bar-nav-icon id="drawerIcon" @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title :to="{ name: 'Home' }" class="text-uppercase white--text">
         <span
         class="font-weight-light">SSAMANCO :3</span>
       </v-toolbar-title>
         <v-spacer></v-spacer>
-          <v-list v-if="$store.state.isLogin">
-            <v-btn @click.native="logout" to="#">Logout</v-btn>
+          <v-list class="soft-mocha" v-if="$store.state.isLogin">
+            <v-btn elevation="0" class="soft-mocha" @click.native="logout" to="#">Logout</v-btn>
           </v-list>
-          <v-list v-else>
-            <v-btn :to="{ name: 'Signup' }">SignUp</v-btn>
-            <v-btn :to="{ name: 'Login' }">Login</v-btn>
+          <v-list v-else class="soft-mocha">
+            <v-btn elevation="0" class="soft-mocha" :to="{ name: 'Signup' }">SignUp</v-btn>
+            <v-btn elevation="0" class="soft-mocha" :to="{ name: 'Login' }">Login</v-btn>
           </v-list>
     </v-app-bar>
 
@@ -69,6 +69,11 @@
             route: "/recommend"
           },
           {
+            icon: "mdi-nature-people",
+            text: "Community",
+            route: "/community"
+          },
+          {
             icon: "mdi-information",
             text: "About",
             route: "/about"
@@ -102,5 +107,7 @@
 } */
 .soft-mocha {
   background-color: rgb(206, 173, 155) !important;
+  
 }
+
 </style>

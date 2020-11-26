@@ -144,4 +144,16 @@ export default {
 #nav a.router-link-exact-active {
   color: rgb(145, 99, 65);
 }
+
+.camel-sand {
+  background-color: rgb(227, 207, 176) !important;
+}
+
+.yolk-yellow {
+  background-color: rgb(251, 201, 109) !important;
+}
+
+.dawn-corall {
+  background-color: rgb(239, 157, 112) !important;  
+}
 </style>

@@ -5,7 +5,7 @@
     :src="$route.query.movie.poster_path">
     </v-img>
     <v-card-title class="d-flex justify-center">
-      {{ $route.query.movie.original_title }}
+      {{ $route.query.movie.title }}
     </v-card-title>
     <v-card-text >
         <v-rating

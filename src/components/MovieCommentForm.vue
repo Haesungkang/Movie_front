@@ -3,10 +3,10 @@
   <div class="reply">
     <input 
     class="reply--text" 
-    placeholder="저희는 영화를 숫자로 줄 세우지 않습니다. 영화에 대한 감상을 서술형으로 작성해주세요." 
+    placeholder="저희는 영화를 숫자로 줄 세우지 않습니다. 영화에 대한 감상을 서술형으로 작성해주세요.(최대 1000자)" 
     v-model.trim="content" 
     type="text" 
-    maxlength="250"
+    maxlength="1000"
     @keypress.enter="writeComment"
     />
   <button class="reply--button" @click.prevent="writeComment"><i class="fa fa-paper-plane"></i> Send</button>
