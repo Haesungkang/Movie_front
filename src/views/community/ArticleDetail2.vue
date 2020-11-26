@@ -47,7 +47,7 @@
 
       <br>
       <router-link v-bind:to="'/community'">Back</router-link>
-      {{article.user_name}} 
+
     </section>
   </template>
 

@@ -1,25 +1,53 @@
 <template>
   <div>
-    <h2>{{ $route.query.article.title }}</h2>
-    <br>
-    <br>
-    <div>
-      {{ hiComments }}
+    <template id="article-content">
+    <section class="grid">
+      <h2>{{ $route.query.article.title }}</h2>
+      <p>
+        <br>
+        <b>Username:</b> {{ $route.query.article.user_name }}
+        <br>
+        <b>Date:</b> {{ $route.query.article.created_at | moment("YYYY-MM-DD") }}
+        <br>
+        <b>Content:</b> {{ $route.query.article.content }}
+        <br>
+      </p>
+
+      <br>
+      <router-link v-bind:to="'/community'">Back</router-link>
+    </section>
+
+  </template>
+
+    <div v-for="comment in hiComments" :key="comment.id">
+      {{ comment.content }}
     </div>
+      <CommentForm @write-comment="writeComment"/>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import CommentForm from '@/components/CommentForm.vue'
+
 const SERVER_URL = process.env.VUE_APP_SERVER_URL
 
 export default {
   name: 'ArticleDetail',
+  components: {
+    CommentForm
+  },
+
+  props: {
+    article: Object
+  },
+
   data: function () {
     return {
       comments: []
     }
   },
+
   computed: {
     hiComments: function () {
       return this.comments
@@ -43,6 +71,9 @@ export default {
           this.comments = response.data
         })
         .catch(error => console.log(error))
+    },
+    writeComment(){
+      this.getComments()
     }
   },
   created: function () {

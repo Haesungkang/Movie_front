@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Glide from '@/components/Glide'
 import GlideSlide from '@/components/GlideSlide'
 import CommentForm from '@/components/CommentForm'
-import Comment from '@/components/Comment'
+// import Comment from '@/components/Comment'
 
 import Home from '../views/Home.vue'
 import MovieList from '@/views/MovieList.vue'
@@ -89,13 +89,13 @@ const routes = [
     name: 'ArticleDetail',
     component: ArticleDetail
   },
+  // {
+  //   path: '/comment',
+  //   name: 'Comment',
+  //   component: Comment
+  // },
   {
-    path: '/comment',
-    name: 'Comment',
-    component: Comment
-  },
-  {
-    path: '/commentform',
+    path: '/community/createcomment',
     name: 'CommentForm',
     component: CommentForm
   },

@@ -28,13 +28,12 @@ export default {
     writeComment: function () {
       if (this.content) {
         
-        const articleId = this.$route.params.article_id
-        console.log(articleId)
+        const article = this.$route.query.article
         const commentItem = {
           content: this.content,
         }
-        axios.post(`${SERVER_URL}/community/${articleId}/comments/`, commentItem, this.setToken())
-          .then(() => this.$emit('write-comment', articleId))
+        axios.post(`${SERVER_URL}/community/${article.id}/comments/`, commentItem, this.setToken())
+          .then(() => this.$emit('write-comment', article.id))
           .catch(error => console.log(error.response))
         this.content = ''
       }

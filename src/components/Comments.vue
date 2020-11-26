@@ -1,3 +1,4 @@
+<!--
 <template>
     <div class="comments">
         <div :class="comments_wrapper_classes">
@@ -257,3 +258,4 @@ hr {
     margin-bottom: 10px;
 }
 </style>
+-->
