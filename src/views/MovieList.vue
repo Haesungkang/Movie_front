@@ -93,13 +93,13 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  background-color: rgb(255, 245, 224);
+  margin-top: 40px;
   .btn {
     border: #2c3e50;
     border-radius: 5px;
     align-items: center;
     justify-content: center;
-    
   }
   .demo {
     .glide {
@@ -121,7 +121,8 @@ export default {
           color: #fff;
            opacity: 1;
           // background: linear-gradient(-45deg,#ed145b,#7b31f4);
-          background-color: lightblue;
+          // background-color: rgb(206, 173, 155);
+          background-color: rgb(145, 99, 65);
         }
       }
     }
@@ -138,6 +139,6 @@ export default {
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: rgb(145, 99, 65);
 }
 </style>

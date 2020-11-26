@@ -16,10 +16,9 @@ import TopVoteAverageMovies from '@/views/TopVoteAverageMovies.vue'
 import About from '@/views/About.vue'
 import Detail from '@/views/Detail.vue'
 
+import ArticleDetail from '@/views/community/ArticleDetail'
 import ArticleList from '@/views/community/ArticleList'
 import CreateArticle from '@/views/community/CreateArticle'
-import CreateComment from '@/views/community/CreateComment'
-import ArticleDetail from '@/views/community/ArticleDetail'
 
 Vue.use(VueRouter)
 
@@ -84,11 +83,6 @@ const routes = [
     path: '/community/createarticle',
     name: 'CreateArticle',
     component: CreateArticle
-  },
-  {
-    path: '/community/createcomment',
-    name: 'CreateComment',
-    component: CreateComment
   },
   {
     path: '/articledetail',
